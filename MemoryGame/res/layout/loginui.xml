@@ -24,8 +24,6 @@
         android:ems="10"
         android:hint="@string/username_prompt"
         android:inputType="textPersonName" >
-
-        <requestFocus />
     </EditText>
 
     <LinearLayout
@@ -56,12 +54,16 @@
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="0.72"
         android:editable="false"
         android:ems="10"
         android:inputType="textMultiLine"
         android:singleLine="false"
-        android:text="@string/sample_text" />
+        android:text="@string/sample_text" >
+
+        <requestFocus />
+
+    </EditText>
 
 </LinearLayout>
