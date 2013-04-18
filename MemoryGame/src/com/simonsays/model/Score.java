@@ -8,6 +8,7 @@ public class Score implements Comparable<Score>
 	private int numObjects;
 	private int sequenceLength;
 	private int time;
+	private int value;
 	
 	// Constructor
 	public Score(int no, int sl, int t)
@@ -38,5 +39,9 @@ public class Score implements Comparable<Score>
 	{
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public Score addScore(Score aScore){
+		
 	}
 }
