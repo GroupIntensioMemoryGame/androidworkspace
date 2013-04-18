@@ -12,5 +12,7 @@
     <string name="username">$username</string>
     <string name="text_error">addNewText</string>
     <string name="numberofobjectsS">Number Of Objects</string>
+    <string name="highscoresS">Highscores:</string>
+    <string name="sample_text">Blah\\nBlah\\nBlah</string>
 
 </resources>
