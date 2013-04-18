@@ -1,8 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/userNametxt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical" >
-    
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/Simon Says"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Username: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Logout" />
+
+    <RelativeLayout
+        android:id="numObjectsPanel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.09" >
+
+        <TextView
+            android:id="@+id/numObjtxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="68dp"
+            android:text="@string/Number Of Objects"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/ObjNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/numObjtxt"
+            android:layout_marginLeft="94dp"
+            android:layout_toRightOf="@+id/numObjtxt"
+            android:entries="@string/1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/numObjtxt"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </LinearLayout>
