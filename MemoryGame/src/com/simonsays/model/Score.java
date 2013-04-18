@@ -41,7 +41,4 @@ public class Score implements Comparable<Score>
 		return 0;
 	}
 	
-	public Score addScore(Score aScore){
-		
-	}
 }
