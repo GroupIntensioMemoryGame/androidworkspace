@@ -15,5 +15,6 @@
     <string name="highscoresS">Highscores:</string>
     <string name="sample_text">Blah\\nBlah\\nBlah</string>
     <string name="createuser_prompt">Create New User</string>
+    <string name="optionsS">Options</string>
 
 </resources>
