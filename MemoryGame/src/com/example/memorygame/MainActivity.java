@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
                 setContentView(R.layout.createuserui);
             }
         });
+        //This is working
         
 
         final Button blogin = (Button) findViewById(R.id.button1);
