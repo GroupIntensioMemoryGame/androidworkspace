@@ -4,5 +4,9 @@
     <string name="app_name">Memory Game</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="game_title">INTENSIO'S AMAZING MEMORY GAME</string>
+    <string name="username_prompt">Enter Your Username</string>
+    <string name="loginS">Login</string>
+    <string name="createnewuserS">Create New User</string>
 
 </resources>
