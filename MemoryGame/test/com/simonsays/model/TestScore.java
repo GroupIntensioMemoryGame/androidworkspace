@@ -1,4 +1,4 @@
-package model;
+package com.simonsays.model;
 
 import static org.junit.Assert.*;
 

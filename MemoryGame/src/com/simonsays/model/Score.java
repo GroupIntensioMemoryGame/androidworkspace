@@ -5,14 +5,15 @@ package com.simonsays.model;
 public class Score implements Comparable<Score>
 {
 	// Instance Variables
+	private String userName;
 	private int numObjects;
 	private int sequenceLength;
 	private int time;
-	private int value;
 	
 	// Constructor
-	public Score(int no, int sl, int t)
+	public Score(String un, int no, int sl, int t)
 	{
+		userName = un;
 		numObjects = no;
 		sequenceLength = sl;
 		time = t;
@@ -22,6 +23,11 @@ public class Score implements Comparable<Score>
 	public int getNumObjects()
 	{
 		return numObjects;
+	}
+	
+	public String getUserName()
+	{
+		return userName;
 	}
 	
 	public int getSequenceLength()
