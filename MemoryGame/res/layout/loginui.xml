@@ -1,69 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/logincontainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="top"
-    android:gravity="center|top"
+    android:gravity="bottom|center|top"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        android:editable="false"
-        android:text="@string/game_title"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="40sp" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        android:ems="10"
-        android:hint="@string/username_prompt"
-        android:inputType="textPersonName" >
-    </EditText>
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:id="@+id/gameintroductioncontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/button1"
+        <TextView
+            android:id="@+id/intensiotitletext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/loginS" />
+            android:layout_gravity="center"
+            android:text="@string/group_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="80sp" />
 
-        <Button
-            android:id="@+id/button2"
+        <TextView
+            android:id="@+id/gametitletext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/createnewuserS" />
+            android:layout_gravity="center"
+            android:text="@string/game_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="40sp" />
+
+        <EditText
+            android:id="@+id/edittextusername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/username_prompt"
+            android:inputType="textPersonName" >
+
+            <requestFocus />
+        </EditText>
+
+        <LinearLayout
+            android:id="@+id/loginbuttoncontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" >
+
+            <Button
+                android:id="@+id/loginbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loginS" />
+
+            <Button
+                android:id="@+id/createnewuserbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/createnewuserS" />
+
+        </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/highscoresS"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="40sp" />
-
-    <EditText
-        android:id="@+id/editText2"
+    <LinearLayout
+        android:id="@+id/highscorecontainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.72"
-        android:editable="false"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        android:text="@string/sample_text" >
+        android:orientation="vertical" >
 
-        <requestFocus />
+        <TextView
+            android:id="@+id/highscoretext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/highscoresS"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="40sp" />
 
-    </EditText>
+        <EditText
+            android:id="@+id/highscoretextboxlist"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_gravity="center"
+            android:layout_weight="0.72"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:text="@string/sample_text" />
+
+    </LinearLayout>
 
 </LinearLayout>

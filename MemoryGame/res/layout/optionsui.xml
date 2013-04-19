@@ -1,15 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gameoptionscontainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
+    android:layout_gravity="center"
+    android:baselineAligned="false"
+    android:gravity="left"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/optionsS"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <LinearLayout
+        android:id="@+id/gameoptionstopcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/gametitletext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/optionsS"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:id="@+id/infologoutplaycontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/highscoretext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.60"
+                android:text="@string/usernameS"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/intensiotitletext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".60"
+                android:text="@string/username"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/logoutbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.60"
+                android:text="@string/logoutS" />
+
+            <Button
+                android:id="@+id/playbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.60"
+                android:text="@string/playS" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/optionsseparationcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:baselineAligned="false" >
+
+        <LinearLayout
+            android:id="@+id/colorcontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/colortext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colorS"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <CheckBox
+                android:id="@+id/checkboxredcolor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/redS" />
+
+            <CheckBox
+                android:id="@+id/checkboxbluecolor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/blueS" />
+
+            <CheckBox
+                android:id="@+id/checkboxgreencolor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/greenS" />
+
+            <CheckBox
+                android:id="@+id/checkboxpurplecolor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/purpleS" />
+
+            <CheckBox
+                android:id="@+id/checkboxorangecolor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orangeS" />
+
+            <CheckBox
+                android:id="@+id/checkboxyellowcolor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yellowS" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/shapescontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/shapestext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shapesS"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <CheckBox
+                android:id="@+id/checkboxsquareshape"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/squareS" />
+
+            <CheckBox
+                android:id="@+id/checkboxtriangleshape"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/triangleS" />
+
+            <CheckBox
+                android:id="@+id/checkboxcircleshape"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/circleS" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutcontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/layouttext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/layoutS"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <RadioButton
+                android:id="@+id/radiobuttongridlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gridS" />
+
+            <RadioButton
+                android:id="@+id/radiobuttondiamondlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/diamondS" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/numberofobjectscontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/numberofobjectstext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/numberofobjectsS"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <ExpandableListView
+                android:id="@+id/listviewnumberofobjects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </ExpandableListView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/objectsizecontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/objectsizetext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/objectsizeS"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <ExpandableListView
+                android:id="@+id/listviewobjectsize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </ExpandableListView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

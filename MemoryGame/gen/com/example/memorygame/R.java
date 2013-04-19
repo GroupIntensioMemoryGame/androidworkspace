@@ -24,13 +24,47 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080006;
-        public static final int button1=0x7f080002;
-        public static final int button2=0x7f080003;
-        public static final int editText1=0x7f080001;
-        public static final int editText2=0x7f080005;
-        public static final int textView1=0x7f080000;
-        public static final int textView2=0x7f080004;
+        public static final int checkboxbluecolor=0x7f080014;
+        public static final int checkboxcircleshape=0x7f08001d;
+        public static final int checkboxgreencolor=0x7f080015;
+        public static final int checkboxorangecolor=0x7f080017;
+        public static final int checkboxpurplecolor=0x7f080016;
+        public static final int checkboxredcolor=0x7f080013;
+        public static final int checkboxsquareshape=0x7f08001b;
+        public static final int checkboxtriangleshape=0x7f08001c;
+        public static final int checkboxyellowcolor=0x7f080018;
+        public static final int colorcontainer=0x7f080011;
+        public static final int colortext=0x7f080012;
+        public static final int createnewuserbutton=0x7f080007;
+        public static final int edittextusername=0x7f080001;
+        public static final int gameintroductioncontainer=0x7f080003;
+        public static final int gameoptionscontainer=0x7f08000b;
+        public static final int gameoptionstopcontainer=0x7f08000c;
+        public static final int gametitletext=0x7f080000;
+        public static final int highscorecontainer=0x7f080008;
+        public static final int highscoretext=0x7f080009;
+        public static final int highscoretextboxlist=0x7f08000a;
+        public static final int infologoutplaycontainer=0x7f08000d;
+        public static final int intensiotitletext=0x7f080004;
+        public static final int layoutcontainer=0x7f08001e;
+        public static final int layouttext=0x7f08001f;
+        public static final int listviewnumberofobjects=0x7f080024;
+        public static final int listviewobjectsize=0x7f080027;
+        public static final int loginbutton=0x7f080006;
+        public static final int loginbuttoncontainer=0x7f080005;
+        public static final int logincontainer=0x7f080002;
+        public static final int logoutbutton=0x7f08000e;
+        public static final int numberofobjectscontainer=0x7f080022;
+        public static final int numberofobjectstext=0x7f080023;
+        public static final int objectsizecontainer=0x7f080025;
+        public static final int objectsizetext=0x7f080026;
+        public static final int optionsseparationcontainer=0x7f080010;
+        public static final int optionsui=0x7f080028;
+        public static final int playbutton=0x7f08000f;
+        public static final int radiobuttondiamondlayout=0x7f080021;
+        public static final int radiobuttongridlayout=0x7f080020;
+        public static final int shapescontainer=0x7f080019;
+        public static final int shapestext=0x7f08001a;
     }
     public static final class layout {
         public static final int createuserui=0x7f030000;
@@ -44,19 +78,37 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int blueS=0x7f050016;
+        public static final int circleS=0x7f05001d;
+        public static final int colorS=0x7f050011;
         public static final int createnewuserS=0x7f050006;
         public static final int createuser_prompt=0x7f05000d;
-        public static final int game_title=0x7f050003;
+        public static final int diamondS=0x7f05001f;
+        public static final int game_title=0x7f05000f;
+        public static final int greenS=0x7f050017;
+        public static final int gridS=0x7f05001e;
+        public static final int group_title=0x7f050003;
         public static final int hello_world=0x7f050002;
         public static final int highscoresS=0x7f05000b;
+        public static final int layoutS=0x7f050013;
         public static final int loginS=0x7f050005;
         public static final int logoutS=0x7f050007;
         public static final int numberofobjectsS=0x7f05000a;
+        public static final int objectsizeS=0x7f050014;
         public static final int optionsS=0x7f05000e;
+        public static final int orangeS=0x7f050019;
+        public static final int playS=0x7f050020;
+        public static final int purpleS=0x7f050018;
+        public static final int redS=0x7f050015;
         public static final int sample_text=0x7f05000c;
+        public static final int shapesS=0x7f050012;
+        public static final int squareS=0x7f05001b;
         public static final int text_error=0x7f050009;
+        public static final int triangleS=0x7f05001c;
         public static final int username=0x7f050008;
+        public static final int usernameS=0x7f050010;
         public static final int username_prompt=0x7f050004;
+        public static final int yellowS=0x7f05001a;
     }
     public static final class style {
         /** 

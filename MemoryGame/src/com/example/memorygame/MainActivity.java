@@ -11,22 +11,36 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.loginui); 
-        final Button bcreateuser = (Button) findViewById(R.id.button2);
+        setContentView(R.layout.loginui);
+        
+
+        final Button blogin = (Button) findViewById(R.id.loginbutton);
+        blogin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setContentView(R.layout.optionsui);
+            }
+        }); 
+        
+        final Button bcreateuser = (Button) findViewById(R.id.createnewuserbutton);
         bcreateuser.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setContentView(R.layout.createuserui);
             }
         });
-        //This is working
-        
-
-        final Button blogin = (Button) findViewById(R.id.button1);
-        blogin.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                setContentView(R.layout.optionsui);
-            }
-        });
+//        
+//        final Button blogout = (Button) findViewById(R.id.logoutbutton);
+//        blogout.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                setContentView(R.layout.loginui);
+//            }
+//        });
+//        
+//        final Button bplay = (Button) findViewById(R.id.playbutton);
+//        bplay.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                setContentView(R.layout.gameui);
+//            }
+//        });
     }
 
 
