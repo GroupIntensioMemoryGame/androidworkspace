@@ -39,6 +39,11 @@ public class SimonSays
 		return numGameObjects;
 	}
 	
+	public Score getScore()
+	{
+		return score;
+	}
+	
 	public void increaseSequence()
 	{
 		curIndexSeq = 0;
