@@ -52,6 +52,7 @@ public class SimonSays
 		// Add a random game object to the end of the sequence
 		int gOID = (int)(numGameObjects * Math.random());
 		computerSequence.add(gOID);
+		notifyObservers();
 	}
 	
 	public boolean compareInput(int input){

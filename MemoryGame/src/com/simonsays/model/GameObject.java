@@ -4,21 +4,15 @@ package com.simonsays.model;
 public class GameObject
 {
 	// Instance Variables
-	private int size;
 	private String color;
 	private int id;
-	private int type;
+	private String type;
 	
 	
-	GameObject(int aSize, String aColor, int aId, int aType){
-		size = aSize;
+	GameObject(String aColor, int aId, String aType){
 		color = aColor;
 		id = aId;
-		aType = type;
-	}
-	
-	public int getSize(){
-		return size;
+		type = aType;
 	}
 	
 	public String getColor(){
@@ -29,7 +23,7 @@ public class GameObject
 		return id;
 	}
 	
-	public int getType(){
+	public String getType(){
 		return type;
 	}
 }
