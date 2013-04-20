@@ -50,21 +50,20 @@ public final class R {
         public static final int intensiotitletext=0x7f080006;
         public static final int layoutcontainer=0x7f080020;
         public static final int layouttext=0x7f080021;
-        public static final int listviewnumberofobjects=0x7f080026;
-        public static final int listviewobjectsize=0x7f080029;
         public static final int loginbutton=0x7f080008;
         public static final int loginbuttoncontainer=0x7f080007;
         public static final int logincontainer=0x7f080004;
         public static final int logoutbutton=0x7f080010;
-        public static final int numberofobjectscontainer=0x7f080024;
-        public static final int numberofobjectstext=0x7f080025;
+        public static final int numberofobjectscontainer=0x7f080025;
+        public static final int numberofobjectstext=0x7f080026;
         public static final int objectsizecontainer=0x7f080027;
         public static final int objectsizetext=0x7f080028;
         public static final int optionsseparationcontainer=0x7f080012;
-        public static final int optionsui=0x7f08002a;
+        public static final int optionsui=0x7f080029;
         public static final int playbutton=0x7f080011;
-        public static final int radiobuttondiamondlayout=0x7f080023;
-        public static final int radiobuttongridlayout=0x7f080022;
+        public static final int radiobuttondiamondlayout=0x7f080024;
+        public static final int radiobuttongridlayout=0x7f080023;
+        public static final int radiolayout=0x7f080022;
         public static final int shapescontainer=0x7f08001b;
         public static final int shapestext=0x7f08001c;
     }

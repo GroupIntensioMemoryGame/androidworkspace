@@ -76,6 +76,7 @@
             android:id="@+id/colorcontainer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="0.20"
             android:orientation="vertical" >
 
             <TextView
@@ -120,13 +121,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/yellowS" />
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/shapescontainer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="0.20"
             android:orientation="vertical" >
 
             <TextView
@@ -153,13 +154,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/circleS" />
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutcontainer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="0.20"
             android:orientation="vertical" >
 
             <TextView
@@ -169,24 +170,32 @@
                 android:text="@string/layoutS"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <RadioButton
-                android:id="@+id/radiobuttongridlayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gridS" />
-
-            <RadioButton
-                android:id="@+id/radiobuttondiamondlayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/diamondS" />
-
+       		<RadioGroup
+	        android:id="@+id/radiolayout"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" >
+ 
+	            <RadioButton
+	                android:id="@+id/radiobuttongridlayout"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:checked="true"
+	                android:text="@string/gridS" />
+	
+	            <RadioButton
+	                android:id="@+id/radiobuttondiamondlayout"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/diamondS" />
+	            
+            </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/numberofobjectscontainer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="0.20"
             android:orientation="vertical" >
 
             <TextView
@@ -195,19 +204,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/numberofobjectsS"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <ExpandableListView
-                android:id="@+id/listviewnumberofobjects"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </ExpandableListView>
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/objectsizecontainer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="0.20"
             android:orientation="vertical" >
 
             <TextView
@@ -216,15 +219,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/objectsizeS"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <ExpandableListView
-                android:id="@+id/listviewobjectsize"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </ExpandableListView>
-
         </LinearLayout>
-
     </LinearLayout>
 
 </LinearLayout>
