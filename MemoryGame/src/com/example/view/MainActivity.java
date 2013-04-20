@@ -1,15 +1,28 @@
 package com.example.view;
 
+import com.simonsays.controller.SimonSaysController;
+import com.simonsays.model.*;
 import com.example.memorygame.R;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.GridView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
+	SimonSaysController sscgame = new SimonSaysController();
+	Player play;
+	
+	
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +43,11 @@ public class MainActivity extends Activity {
     	final Button blogin = (Button) findViewById(R.id.loginbutton);
     	blogin.setOnClickListener(new View.OnClickListener() {
     		public void onClick(View v) {
+    			// get text from login
+    			// create player from login string
+    			final TextView tvlogins = (TextView) findViewById(R.id.edittextusername);
+    			String temp = tvlogins.getText().toString();
+    			play = new Player(temp);
     			optionsSetup();
     		}
     	});
@@ -45,9 +63,12 @@ public class MainActivity extends Activity {
     public void optionsSetup()
     {
 		setContentView(R.layout.optionsui);
+		final Spinner snumberofobjects = (Spinner) findViewById(R.id.numberofobjectsdropdown);
+		
         final Button blogout = (Button) findViewById(R.id.logoutbutton);
         blogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+            	play = null;
             	loginSetup();
             }
         });
@@ -83,5 +104,9 @@ public class MainActivity extends Activity {
     public void playSetup()
     {
     	setContentView(R.layout.gameui);
+    	GridView gameview = (GridView) findViewById(R.id.gamegridview);
+    	sscgame.play(play, -1);
+    	gameview.setAdapter(new ImageAdapter(this));
+    	
     }
 }
