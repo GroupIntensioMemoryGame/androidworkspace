@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
         final Button bplay = (Button) findViewById(R.id.playbutton);
         bplay.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                setContentView(R.layout.gameui);
+                playSetup();
             }
         });
     }
@@ -64,7 +64,24 @@ public class MainActivity extends Activity {
     public void createnewuserSetup()
     {
         setContentView(R.layout.createuserui);
-    	
+
+        final Button bcreate = (Button) findViewById(R.id.createbutton);
+        bcreate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	loginSetup();
+            }
+        });
+
+        final Button bcancel = (Button) findViewById(R.id.cancelbutton);
+        bcancel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	loginSetup();
+            }
+        });
     }
     
+    public void playSetup()
+    {
+    	setContentView(R.layout.gameui);
+    }
 }

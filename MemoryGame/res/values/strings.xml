@@ -34,5 +34,7 @@
     <string name="gridS">Grid</string>
     <string name="diamondS">Diamond</string>
     <string name="playS">Play</string>
+    <string name="createS">Create</string>
+    <string name="cancelS">Cancel</string>
 
 </resources>
