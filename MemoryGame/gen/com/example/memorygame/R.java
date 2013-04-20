@@ -56,16 +56,18 @@ public final class R {
         public static final int logoutbutton=0x7f080010;
         public static final int numberofobjectscontainer=0x7f080025;
         public static final int numberofobjectstext=0x7f080026;
-        public static final int objectsizecontainer=0x7f080027;
-        public static final int objectsizetext=0x7f080028;
+        public static final int objectsizecontainer=0x7f080028;
+        public static final int objectsizetext=0x7f080029;
         public static final int optionsseparationcontainer=0x7f080012;
-        public static final int optionsui=0x7f080029;
+        public static final int optionsui=0x7f08002b;
         public static final int playbutton=0x7f080011;
         public static final int radiobuttondiamondlayout=0x7f080024;
         public static final int radiobuttongridlayout=0x7f080023;
         public static final int radiolayout=0x7f080022;
         public static final int shapescontainer=0x7f08001b;
         public static final int shapestext=0x7f08001c;
+        public static final int spinner1=0x7f080027;
+        public static final int spinner2=0x7f08002a;
     }
     public static final class layout {
         public static final int createuserui=0x7f030000;

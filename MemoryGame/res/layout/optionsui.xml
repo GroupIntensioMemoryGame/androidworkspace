@@ -11,12 +11,14 @@
     <LinearLayout
         android:id="@+id/gameoptionstopcontainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
 
         <TextView
             android:id="@+id/gametitletext"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:layout_weight="1.28"
             android:text="@string/optionsS"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="30sp" />
@@ -25,14 +27,14 @@
             android:id="@+id/infologoutplaycontainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:gravity="center" >
+            android:layout_gravity="fill"
+            android:gravity="right" >
 
             <TextView
                 android:id="@+id/highscoretext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="right"
                 android:layout_weight="0.60"
                 android:text="@string/usernameS"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -42,6 +44,7 @@
                 android:id="@+id/intensiotitletext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right"
                 android:layout_weight=".60"
                 android:text="@string/username"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -51,6 +54,7 @@
                 android:id="@+id/logoutbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right"
                 android:layout_weight="0.60"
                 android:text="@string/logoutS" />
 
@@ -58,11 +62,10 @@
                 android:id="@+id/playbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right"
                 android:layout_weight="0.60"
                 android:text="@string/playS" />
-
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
@@ -204,6 +207,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/numberofobjectsS"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -219,6 +228,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/objectsizeS"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
     </LinearLayout>
 
