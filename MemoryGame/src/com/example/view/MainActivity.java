@@ -1,4 +1,6 @@
-package com.example.memorygame;
+package com.example.view;
+
+import com.example.memorygame.R;
 
 import android.os.Bundle;
 import android.app.Activity;
