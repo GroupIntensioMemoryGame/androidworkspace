@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Spinner;
@@ -45,10 +46,12 @@ public class MainActivity extends Activity {
     		public void onClick(View v) {
     			// get text from login
     			// create player from login string
-    			final TextView tvlogins = (TextView) findViewById(R.id.edittextusername);
-    			String temp = tvlogins.getText().toString();
-    			play = new Player(temp);
+    			final TextView tvlogins = (TextView) findViewById(R.id.loginusertext);
+    			String input = tvlogins.getText().toString();
+    			play = new Player(input);
     			optionsSetup();
+    			final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
+    			tvusername.setText(input);
     		}
     	});
     	
@@ -64,6 +67,16 @@ public class MainActivity extends Activity {
     {
 		setContentView(R.layout.optionsui);
 		final Spinner snumberofobjects = (Spinner) findViewById(R.id.numberofobjectsdropdown);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+		        R.array.number_array, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		snumberofobjects.setAdapter(adapter);
+		
+		final Spinner ssize = (Spinner) findViewById(R.id.objectsizespinner);
+		ArrayAdapter<CharSequence> asize = ArrayAdapter.createFromResource(this,
+		        R.array.size_array, android.R.layout.simple_spinner_item);
+		asize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		ssize.setAdapter(asize);
 		
         final Button blogout = (Button) findViewById(R.id.logoutbutton);
         blogout.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +102,12 @@ public class MainActivity extends Activity {
         final Button bcreate = (Button) findViewById(R.id.createbutton);
         bcreate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	loginSetup();
+            	final TextView tvcreate = (TextView) findViewById(R.id.createnewusertext);
+    			String input = tvcreate.getText().toString();
+    			play = new Player(input);
+    			optionsSetup();
+    			final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
+    			tvusername.setText(input);
             }
         });
 
@@ -105,6 +123,7 @@ public class MainActivity extends Activity {
     {
     	setContentView(R.layout.gameui);
     	GridView gameview = (GridView) findViewById(R.id.gamegridview);
+    	gameview.setNumColumns(3);
     	sscgame.play(play, -1);
     	gameview.setAdapter(new ImageAdapter(this));
     	

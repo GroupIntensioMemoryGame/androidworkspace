@@ -16,12 +16,11 @@
         android:textSize="40sp" />
 
     <EditText
-        android:id="@+id/edittextusername"
-        android:layout_width="305dp"
+        android:id="@+id/createnewusertext"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:ems="10"
-        android:hint="@string/createuser_prompt"
+        android:hint="@string/createnewuserS"
         android:inputType="textPersonName" >
 
         <requestFocus />

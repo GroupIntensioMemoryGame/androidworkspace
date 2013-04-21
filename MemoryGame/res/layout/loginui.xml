@@ -14,7 +14,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/intensiotitletext"
+            android:id="@+id/optionsusernametext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -32,7 +32,7 @@
             android:textSize="40sp" />
 
         <EditText
-            android:id="@+id/edittextusername"
+            android:id="@+id/loginusertext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

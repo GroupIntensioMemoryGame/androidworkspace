@@ -37,9 +37,6 @@
     <string name="createS">Create</string>
     <string name="cancelS">Cancel</string>
     <string-array name="number_array">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
         <item>4</item>
         <item>5</item>
         <item>6</item>
@@ -64,5 +61,11 @@
         <item>25</item>
         <item></item>
     </string-array>
-
+	<string-array name="size_array">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+        <item></item>
+    </string-array>
+    
 </resources>
