@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:baselineAligned="false"
-    android:gravity="left"
+    android:gravity="center_horizontal|center"
     android:orientation="vertical" >
 
     <LinearLayout
         android:id="@+id/gameoptionstopcontainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="924dp"
+        android:layout_height="75dp"
         android:layout_gravity="center" >
 
         <TextView
@@ -24,18 +24,15 @@
             android:textSize="30sp" />
 
         <LinearLayout
-            android:id="@+id/infologoutplaycontainer"
+            android:id="@+id/LinearLayout1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:gravity="right" >
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/highscoretext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_weight="0.60"
                 android:text="@string/usernameS"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="20sp" />
@@ -44,42 +41,25 @@
                 android:id="@+id/optionsusernametext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
                 android:layout_weight=".60"
                 android:text="@string/username"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/logoutbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_weight="0.60"
-                android:text="@string/logoutS" />
-
-            <Button
-                android:id="@+id/playbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_weight="0.60"
-                android:text="@string/playS" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/optionsseparationcontainer"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:baselineAligned="false" >
+        android:layout_height="269dp"
+        android:baselineAligned="true"
+        android:gravity="center_vertical|center" >
 
         <LinearLayout
             android:id="@+id/colorcontainer"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.20"
+            android:layout_gravity="left"
             android:orientation="vertical" >
 
             <TextView
@@ -87,50 +67,57 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/colorS"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30sp" />
 
             <CheckBox
                 android:id="@+id/checkboxredcolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/redS" />
+                android:text="@string/redS"
+                android:textSize="25sp" />
 
             <CheckBox
                 android:id="@+id/checkboxbluecolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/blueS" />
+                android:text="@string/blueS"
+                android:textSize="25sp" />
 
             <CheckBox
                 android:id="@+id/checkboxgreencolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/greenS" />
+                android:text="@string/greenS"
+                android:textSize="25sp" />
 
             <CheckBox
                 android:id="@+id/checkboxpurplecolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/purpleS" />
+                android:text="@string/purpleS"
+                android:textSize="25sp" />
 
             <CheckBox
                 android:id="@+id/checkboxorangecolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/orangeS" />
+                android:text="@string/orangeS"
+                android:textSize="25sp" />
 
             <CheckBox
                 android:id="@+id/checkboxyellowcolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/yellowS" />
+                android:text="@string/yellowS"
+                android:textSize="25sp" />
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/shapescontainer"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.20"
             android:orientation="vertical" >
 
             <TextView
@@ -138,32 +125,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/shapesS"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30sp" />
 
             <CheckBox
                 android:id="@+id/checkboxsquareshape"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/squareS" />
+                android:text="@string/squareS"
+                android:textSize="25sp" />
 
             <CheckBox
                 android:id="@+id/checkboxtriangleshape"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/triangleS" />
+                android:text="@string/triangleS"
+                android:textSize="25sp" />
 
             <CheckBox
                 android:id="@+id/checkboxcircleshape"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/circleS" />
+                android:text="@string/circleS"
+                android:textSize="25sp" />
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutcontainer"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.20"
+            android:layout_gravity="right"
             android:orientation="vertical" >
 
             <TextView
@@ -171,55 +163,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/layoutS"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30sp" />
 
-       		<RadioGroup
-	        android:id="@+id/radiolayout"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content" >
- 
-	            <RadioButton
-	                android:id="@+id/radiobuttongridlayout"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:checked="true"
-	                android:text="@string/gridS" />
-	
-	            <RadioButton
-	                android:id="@+id/radiobuttondiamondlayout"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:text="@string/diamondS" />
-	            
-            </RadioGroup>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/numberofobjectscontainer"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.20"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/numberofobjectstext"
+            <RadioGroup
+                android:id="@+id/radiolayout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/numberofobjectsS"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:layout_height="wrap_content" >
 
-            <Spinner
-                android:id="@+id/numberofobjectsdropdown"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/radiobuttongridlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/gridS"
+                    android:textSize="25sp" />
+
+                <RadioButton
+                    android:id="@+id/radiobuttondiamondlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/diamondS"
+                    android:textSize="25sp" />
+
+            </RadioGroup>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/objectsizecontainer"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.20"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
             android:orientation="vertical" >
 
             <TextView
@@ -227,14 +202,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/objectsizeS"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30sp" />
 
             <Spinner
                 android:id="@+id/objectsizespinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/numberofobjectscontainer"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:gravity="top"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/numberofobjectstext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/numberofobjectsS"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30sp" />
+
+            <Spinner
+                android:id="@+id/numberofobjectsdropdown"
+                android:layout_width="74dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/infologoutplaycontainer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="bottom" >
+
+        <Button
+            android:id="@+id/logoutbutton"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_weight="0.60"
+            android:text="@string/logoutS" />
+
+        <Button
+            android:id="@+id/playbutton"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_weight="0.60"
+            android:text="@string/playS" />
+
     </LinearLayout>
 
 </LinearLayout>

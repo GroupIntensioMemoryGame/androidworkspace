@@ -10,7 +10,7 @@
         android:id="@+id/gametitletext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center|center_horizontal"
         android:text="@string/createuser_prompt"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="40sp" />
@@ -19,6 +19,7 @@
         android:id="@+id/createnewusertext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:ems="10"
         android:hint="@string/createnewuserS"
         android:inputType="textPersonName" >
@@ -30,20 +31,20 @@
         android:id="@+id/createnewuserbuttoncontainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" >
+        android:layout_gravity="center|center_horizontal" >
 
         <Button
             android:id="@+id/createbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center|center_horizontal"
             android:text="@string/createS" />
 
         <Button
             android:id="@+id/cancelbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center|center_horizontal"
             android:text="@string/cancelS" />
     </LinearLayout>
 

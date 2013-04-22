@@ -13,6 +13,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +22,9 @@ public class MainActivity extends Activity {
 
 	SimonSaysController sscgame = new SimonSaysController();
 	Player play;
-	
-	
+	int numberofobjects = 0;
+	int objectsize = 0;
+	boolean gridlayout = true;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,17 +68,34 @@ public class MainActivity extends Activity {
     public void optionsSetup()
     {
 		setContentView(R.layout.optionsui);
+		
 		final Spinner snumberofobjects = (Spinner) findViewById(R.id.numberofobjectsdropdown);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 		        R.array.number_array, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		snumberofobjects.setAdapter(adapter);
 		
+		snumberofobjects.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+		        numberofobjects = pos + 4;
+		    }
+		    public void onNothingSelected(AdapterView<?> parent) {
+		    }
+		});
+		
 		final Spinner ssize = (Spinner) findViewById(R.id.objectsizespinner);
 		ArrayAdapter<CharSequence> asize = ArrayAdapter.createFromResource(this,
 		        R.array.size_array, android.R.layout.simple_spinner_item);
 		asize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		ssize.setAdapter(asize);
+
+		ssize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+		        objectsize = pos;
+		    }
+		    public void onNothingSelected(AdapterView<?> parent) {
+		    }
+		});
 		
         final Button blogout = (Button) findViewById(R.id.logoutbutton);
         blogout.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +112,19 @@ public class MainActivity extends Activity {
             }
         });
         
+        final RadioButton rbgridlayout = (RadioButton) findViewById(R.id.radiobuttongridlayout);
+        rbgridlayout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	gridlayout = true;
+            }
+        });
+        
+        final RadioButton rbdiamondlayout = (RadioButton) findViewById(R.id.radiobuttondiamondlayout);
+        rbdiamondlayout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	gridlayout = false;
+            }
+        });
     }
     
     public void createnewuserSetup()
@@ -123,9 +155,19 @@ public class MainActivity extends Activity {
     {
     	setContentView(R.layout.gameui);
     	GridView gameview = (GridView) findViewById(R.id.gamegridview);
-    	gameview.setNumColumns(3);
-    	sscgame.play(play, -1);
+    	int temp = 0;
+    	if(gridlayout)
+    	{
+    		temp = (int)Math.ceil(Math.sqrt(numberofobjects));
+    	}
+    	else
+    	{ 	
+    		temp = (((int)Math.ceil(Math.sqrt(numberofobjects)))*2) - 1;
+    	}
+    	gameview.setNumColumns(temp);
+    	sscgame.play(play, numberofobjects);
     	gameview.setAdapter(new ImageAdapter(this));
     	
     }
+    
 }
