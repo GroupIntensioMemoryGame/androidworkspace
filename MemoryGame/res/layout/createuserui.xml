@@ -1,51 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/createnewusercontainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:gravity="center_horizontal"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/gametitletext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal"
-        android:text="@string/createuser_prompt"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="40sp" />
-
-    <EditText
-        android:id="@+id/createnewusertext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:ems="10"
-        android:hint="@string/createnewuserS"
-        android:inputType="textPersonName" >
-
-        <requestFocus />
-    </EditText>
+    android:gravity="top"
+    android:orientation="vertical" 
+	android:background="@raw/whitebackground">
 
     <LinearLayout
-        android:id="@+id/createnewuserbuttoncontainer"
-        android:layout_width="wrap_content"
+        android:id="@+id/cnucentercontainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal" >
+        android:layout_gravity="center|top"
+        android:layout_weight="1.15"
+        android:gravity="top"
+        android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/createbutton"
+        <TextView
+            android:id="@+id/gametitletext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal"
-            android:text="@string/createS" />
+            android:layout_gravity="center"
+            android:text="@string/createuser_prompt"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="40sp" />
 
-        <Button
-            android:id="@+id/cancelbutton"
+        <EditText
+            android:id="@+id/createnewusertext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal"
-            android:text="@string/cancelS" />
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/createnewuserS"
+            android:inputType="textPersonName" >
+
+            <requestFocus />
+        </EditText>
+
+        <LinearLayout
+            android:id="@+id/createnewuserbuttoncontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" >
+
+            <Button
+                android:id="@+id/createbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal|center_vertical"
+                android:text="@string/createS" />
+
+            <Button
+                android:id="@+id/cancelbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal|center_vertical"
+                android:text="@string/cancelS" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
