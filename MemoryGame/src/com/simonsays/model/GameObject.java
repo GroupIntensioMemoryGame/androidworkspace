@@ -3,19 +3,31 @@ package com.simonsays.model;
 //TODO Implement the GameObject class
 public class GameObject
 {
+	// Final Static Variables
+	final public int SQUARE = 0;
+	final public int TRIANGLE = 1;
+	final public int CIRCLE = 2;
+	
+	final public int RED = 0;
+	final public int BLUE = 1;
+	final public int GREEN = 2;
+	final public int PURPLE = 3;
+	final public int ORANGE = 4;
+	final public int YELLOW = 5;
+	
 	// Instance Variables
-	private String color;
+	private int color;
 	private int id;
-	private String type;
+	private int shape;
 	
 	
-	GameObject(String aColor, int aId, String aType){
+	GameObject(int aShape, int aColor, int aId){
 		color = aColor;
 		id = aId;
-		type = aType;
+		shape = aShape;
 	}
 	
-	public String getColor(){
+	public int getColor(){
 		return color;
 	}
 	
@@ -23,7 +35,7 @@ public class GameObject
 		return id;
 	}
 	
-	public String getType(){
-		return type;
+	public int getShape(){
+		return shape;
 	}
 }

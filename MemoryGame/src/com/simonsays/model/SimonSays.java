@@ -7,6 +7,7 @@ public class SimonSays
 {
 	// Instance Variables
 	private ArrayList<Integer> computerSequence;
+	private ArrayList<GameObject> shapeOrder;
 	private int roundNumber;
 	private int numGameObjects;
 	private Score score;
@@ -21,6 +22,7 @@ public class SimonSays
 		roundNumber = 0;
 		numGameObjects = nGO;
 		computerSequence = new ArrayList<Integer>();
+		shapeOrder = new ArrayList<GameObject>();
 	}
 	
 	// Instance Methods
@@ -92,5 +94,23 @@ public class SimonSays
 	public void endGame(int time) {
 		score = new Score(player.getName(), numGameObjects, roundNumber, time);
 		notifyObservers();
+	}
+	
+	public GameObject getObject(int loc)
+	{
+		return shapeOrder.get(loc);
+	}
+	
+	public void createGameObjects(ArrayList<Integer> shapes, ArrayList<Integer> colors, int nogo)
+	{
+		for(int i = 0; i < nogo; i++)
+		{
+			int shapeN = (int)(Math.random()*shapes.size());
+			int colorN = (int)(Math.random()*colors.size());
+			int newShape = shapes.get(shapeN);
+			int newColor = colors.get(colorN);
+			GameObject go = new GameObject(newShape, newColor, i);
+			shapeOrder.add(go);
+		}
 	}
 }

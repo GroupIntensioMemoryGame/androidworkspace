@@ -1,5 +1,7 @@
 package com.example.view;
 
+import java.util.ArrayList;
+
 import com.simonsays.controller.SimonSaysController;
 import com.simonsays.model.*;
 import com.example.memorygame.R;
@@ -12,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -153,7 +156,47 @@ public class MainActivity extends Activity {
     
     public void playSetup()
     {
+    	ArrayList<Boolean> bacolors = new ArrayList<Boolean>();
+        final CheckBox cbred = (CheckBox) findViewById(R.id.checkboxredcolor);
+        final CheckBox cbblue = (CheckBox) findViewById(R.id.checkboxbluecolor);
+        final CheckBox cbgreen = (CheckBox) findViewById(R.id.checkboxgreencolor);
+        final CheckBox cbpurple = (CheckBox) findViewById(R.id.checkboxpurplecolor);
+        final CheckBox cborange = (CheckBox) findViewById(R.id.checkboxorangecolor);
+        final CheckBox cbyellow = (CheckBox) findViewById(R.id.checkboxyellowcolor);
+    	bacolors.add(cbred.isChecked());
+    	bacolors.add(cbblue.isChecked());
+    	bacolors.add(cbgreen.isChecked());
+    	bacolors.add(cbpurple.isChecked());
+    	bacolors.add(cborange.isChecked());
+    	bacolors.add(cbyellow.isChecked());
+    	ArrayList<Boolean> bashapes = new ArrayList<Boolean>();
+        final CheckBox cbsquare = (CheckBox) findViewById(R.id.checkboxsquareshape);
+        final CheckBox cbtriangle = (CheckBox) findViewById(R.id.checkboxtriangleshape);
+        final CheckBox cbcircle = (CheckBox) findViewById(R.id.checkboxcircleshape);
+    	bashapes.add(cbsquare.isChecked());
+    	bashapes.add(cbtriangle.isChecked());
+    	bashapes.add(cbcircle.isChecked());
+    	
     	setContentView(R.layout.gameui);
+    	ArrayList<Integer> alcolors = new ArrayList<Integer>();
+    	ArrayList<Integer> alshapes = new ArrayList<Integer>();
+    	for(int i = 0; i < bacolors.size(); i++)
+    	{
+    		if(bacolors.get(i))
+    		{
+    			alcolors.add(i);
+    		}
+    	}
+    	for(int i = 0; i < bashapes.size(); i++)
+    	{
+    		if(bashapes.get(i))
+    		{
+    			alshapes.add(i);
+    		}
+    	}
+    	
+    	sscgame.play(play, alshapes, alcolors, numberofobjects);
+    	
     	GridView gameview = (GridView) findViewById(R.id.gamegridview);
     	int temp = 0;
     	if(gridlayout)
@@ -165,9 +208,14 @@ public class MainActivity extends Activity {
     		temp = (((int)Math.ceil(Math.sqrt(numberofobjects)))*2) - 1;
     	}
     	gameview.setNumColumns(temp);
-    	sscgame.play(play, numberofobjects);
-    	gameview.setAdapter(new ImageAdapter(this));
     	
+    	ImageAdapter iagame = new ImageAdapter(this);
+    	for(int i = 0; i < numberofobjects; i++)
+    	{
+    		iagame.addShape(sscgame.getGameObject(i));
+    	}
+    	iagame.prepare();
+    	gameview.setAdapter(iagame);
     }
     
 }

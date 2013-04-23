@@ -43,8 +43,8 @@ public class SimonSays implements ISimonSaysObserver {
 		String temp = getPlayerName();
 		player = new Player(temp);
 		
-		this.simonctrl.play(player, numObjects);
-		
+//		this.simonctrl.play(player, numObjects);
+		//Changed the parameters to the method, needs arraylist of shapes and colors
 		
 		
 	}

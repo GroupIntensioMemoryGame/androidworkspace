@@ -1,6 +1,11 @@
 package com.example.view;
 
+import java.util.ArrayList;
+
 import com.example.memorygame.R;
+import com.simonsays.model.GameObject;
+import com.simonsays.model.SimonSays;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +14,21 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
+	// Final Static Variables
+	final public int CIRCLE = 0;
+	final public int TRIANGLE = 1;
+	final public int SQUARE = 2;
+	
     private Context mContext;
+	private ArrayList<Integer> shapeView;
 
     public ImageAdapter(Context c) {
         mContext = c;
+        shapeView = new ArrayList<Integer>();
     }
 
     public int getCount() {
-        return mThumbIds.length;
+        return currentShapes.length;
     }
 
     public Object getItem(int position) {
@@ -38,21 +50,39 @@ public class ImageAdapter extends BaseAdapter {
         } else {
             imageView = (ImageView) convertView;
         }
-
-        imageView.setImageResource(mThumbIds[position]);
+        
+        imageView.setImageResource(currentShapes[position]);
         return imageView;
     }
-
+    
+    public void prepare()
+    {
+        currentShapes = new Integer[shapeView.size()];
+        for(int i = 0 ; i < shapeView.size(); i++)
+        {
+        	currentShapes[i] = shapeView.get(i);
+        }
+    }
+    
+    public void addShape(GameObject go)
+    {
+    	int temp = ((go.getShape() * 6) + go.getColor());
+    	shapeView.add(availableShapes[temp]);
+    }
+    
     // references to our images
-    private Integer[] mThumbIds = {
-    		R.drawable.cr, R.drawable.cb,
-    		R.drawable.cg, R.drawable.cp,
-    		R.drawable.co, R.drawable.cy,
+    private Integer[] availableShapes = {
     		R.drawable.sr, R.drawable.sb,
     		R.drawable.sg, R.drawable.sp,
     		R.drawable.so, R.drawable.sy,
+    		
     		R.drawable.tr, R.drawable.tb,
     		R.drawable.tg, R.drawable.tp,
-    		R.drawable.to, R.drawable.ty
+    		R.drawable.to, R.drawable.ty,
+    		
+    		R.drawable.cr, R.drawable.cb,
+    		R.drawable.cg, R.drawable.cp,
+    		R.drawable.co, R.drawable.cy
     };
+    private Integer[] currentShapes;
 }
