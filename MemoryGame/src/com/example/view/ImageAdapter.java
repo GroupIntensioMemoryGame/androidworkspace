@@ -65,6 +65,21 @@ public class ImageAdapter extends BaseAdapter {
     	shapeView.add(availableShapes[temp]);
     }
     
+    public void greyShape(int place)
+    {
+    	int temp = shapeView.get(place);
+    	shapeView.set(place, R.drawable.sr);
+    	try 
+    	{
+			Thread.sleep(100);
+		} 
+    	catch (InterruptedException e) 
+    	{
+    		
+		}
+    	shapeView.set(place, temp);
+    }
+    
     // references to our images
     private Integer[] availableShapes = {
     		R.drawable.sr, R.drawable.sb,
