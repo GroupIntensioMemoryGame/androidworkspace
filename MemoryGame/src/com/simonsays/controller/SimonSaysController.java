@@ -38,7 +38,7 @@ public class SimonSaysController {
 			ss.increaseCurIndex();
 		}
 		else{
-			ss.endGame(ss.getRoundNumber());
+			ss.endGame();
 		}
 	}
 	

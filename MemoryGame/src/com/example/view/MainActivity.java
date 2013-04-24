@@ -21,7 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements ISimonSaysObserver {
 
 	SimonSaysController sscgame = new SimonSaysController();
 	Player play;
@@ -241,10 +241,22 @@ public class MainActivity extends Activity {
     	{
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
             {
-            	TextView tvgameviewdebug = (TextView) findViewById(R.id.gameviewtextview);
-            	tvgameviewdebug.setText("Selected Item " + position);
+            	sscgame.compareSequence(position);
         	}
         });
     }
+
+
+	@Override
+	public void update(SimonSays ss) {
+		if(ss.getIsActive())
+		{
+			
+		}
+		else
+		{
+			setContentView(R.layout.optionsui);
+		}
+	}
     
 }

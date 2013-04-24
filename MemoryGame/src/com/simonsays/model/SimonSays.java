@@ -14,6 +14,7 @@ public class SimonSays
 	private int roundNumber;
 	private int numGameObjects;
 	private int curIndexSeq;
+	private Boolean isActive;
 	
 	// Constructor
 	public SimonSays(Player p, int nGO)
@@ -23,6 +24,7 @@ public class SimonSays
 		numGameObjects = nGO;
 		computerSequence = new ArrayList<Integer>();
 		shapeOrder = new ArrayList<GameObject>();
+		isActive = true;
 	}
 	
 	// Instance Methods
@@ -91,14 +93,19 @@ public class SimonSays
 		return new HashSet<ISimonSaysObserver>(observers);
 	}
 	
-	public void endGame(int time) {
-		score = new Score(player.getName(), numGameObjects, roundNumber, time);
+	public void endGame() {
+		//score = new Score(player.getName(), numGameObjects, roundNumber, time);
 		notifyObservers();
 	}
 	
 	public GameObject getObject(int loc)
 	{
 		return shapeOrder.get(loc);
+	}
+	
+	public Boolean getIsActive()
+	{
+		return isActive;
 	}
 	
 	public void createGameObjects(ArrayList<Integer> shapes, ArrayList<Integer> colors, int nogo)
