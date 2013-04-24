@@ -67,17 +67,16 @@ public class ImageAdapter extends BaseAdapter {
     
     public void greyShape(int place)
     {
-    	int temp = shapeView.get(place);
-    	shapeView.set(place, R.drawable.sr);
-    	try 
-    	{
-			Thread.sleep(100);
-		} 
-    	catch (InterruptedException e) 
-    	{
-    		
-		}
-    	shapeView.set(place, temp);
+    	currentShapes[place] = R.drawable.sgrey;
+    	notifyDataSetChanged();
+    }
+    
+    public void revertShape(int place)
+    {
+    	//THIS IS WHY THE SHAPES ARE TURING INTO SQUARE BOXES
+    	//What I am trying to do is change those shapes from a grey box and back
+//    	currentShapes[place] = shapeView.get(place);
+    	notifyDataSetChanged();
     }
     
     // references to our images

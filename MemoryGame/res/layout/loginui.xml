@@ -5,12 +5,16 @@
     android:layout_height="match_parent"
     android:layout_gravity="top"
     android:background="@raw/whitebackground"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
     android:orientation="vertical" >
 
     <LinearLayout
         android:id="@+id/gameintroductioncontainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:orientation="vertical" >
 
         <TextView
@@ -18,6 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:text="@string/group_title"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="80sp" />
@@ -27,6 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:text="@string/game_title"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="40sp" />
@@ -47,7 +55,9 @@
             android:id="@+id/loginbuttoncontainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" >
+            android:layout_gravity="center"
+            android:focusable="false"
+            android:focusableInTouchMode="false" >
 
             <Button
                 android:id="@+id/loginbutton"
@@ -69,6 +79,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:gravity="center_horizontal"
         android:inputType="none"
         android:text="@string/$error_message"
@@ -78,6 +90,8 @@
         android:id="@+id/highscorecontainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:orientation="vertical" >
 
         <TextView
@@ -85,6 +99,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:text="@string/highscoresS"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="40sp" />
@@ -96,8 +112,10 @@
             android:layout_gravity="center"
             android:layout_weight="0.72"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="top"
-            android:inputType="textMultiLine"
+            android:inputType="none"
             android:singleLine="false"
             android:text="@string/sample_text" />
 

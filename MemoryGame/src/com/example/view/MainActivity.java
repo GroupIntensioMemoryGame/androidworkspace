@@ -7,6 +7,7 @@ import com.simonsays.model.*;
 import com.example.memorygame.R;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
@@ -19,9 +20,8 @@ import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity extends Activity implements ISimonSaysObserver {
+public class MainActivity extends Activity {
 
 	SimonSaysController sscgame = new SimonSaysController();
 	Player play;
@@ -29,9 +29,14 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 	int objectsize = 0;
 	boolean gridlayout = true;
 	
+	GridView gameview;
+	ImageAdapter iagame;
+	Handler handler;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        handler = new Handler();
         loginSetup();
     }
 
@@ -215,10 +220,11 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	}
     	
     	setContentView(R.layout.gameui);
+    	gameview = (GridView) findViewById(R.id.gamegridview);
+    	iagame = new ImageAdapter(this);
     	
     	sscgame.play(play, alshapes, alcolors, numberofobjects);
     	
-    	GridView gameview = (GridView) findViewById(R.id.gamegridview);
     	int temp = 0;
     	if(gridlayout)
     	{
@@ -230,33 +236,63 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	}
     	gameview.setNumColumns(temp);
     	
-    	ImageAdapter iagame = new ImageAdapter(this);
     	for(int i = 0; i < numberofobjects; i++)
     	{
     		iagame.addShape(sscgame.getGameObject(i));
+    	}
+    	
+    	for(int i = 0; i < 5; i++)
+    	{
+    		sscgame.getGame().increaseSequence();
     	}
     	iagame.prepare();
     	gameview.setAdapter(iagame);
     	gameview.setOnItemClickListener(new OnItemClickListener() 
     	{
+    		int clicks = 0;
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
             {
-            	sscgame.compareSequence(position);
+            	//Boolean matches sequence (if false closes to results)
+            	//Boolean completed sequence (until true lets player guess, then shows incremented sequence)
+            	TextView tvgameviewdebug = (TextView) findViewById(R.id.gameviewtextview);
+            	clicks++;
+            	
+            	if(clicks == sscgame.getGame().getComputerSequence().size())
+            	{
+            		clicks = 0;
+            		sscgame.getGame().increaseSequence();
+            		showSequence(sscgame.getGame().getComputerSequence());
+            	}
+            	tvgameviewdebug.setText("Pos: " + position + "Clicks: " + clicks);
+            	//sscgame.compareSequence(position);
         	}
         });
     }
 
+    public void showSequence(ArrayList<Integer> sequence)
+    {
+    	for(int i = 0; i < sequence.size(); i++)
+    	{
+    		iagame.greyShape(sequence.get(i));
+    		try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		iagame.revertShape(sequence.get(i));
+    	}
+    }
 
-	@Override
-	public void update(SimonSays ss) {
-		if(ss.getIsActive())
-		{
-			
-		}
-		else
-		{
-			setContentView(R.layout.optionsui);
-		}
-	}
+//	public void update(SimonSays ss) {
+//		if(ss.getIsActive())
+//		{
+//			
+//		}
+//		else
+//		{
+//			setContentView(R.layout.optionsui);
+//		}
+//	}
     
 }
