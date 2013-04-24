@@ -61,7 +61,8 @@ public class MainActivity extends Activity {
     			}
     			else
     			{
-    				
+    				final TextView tverrormessage = (TextView) findViewById(R.id.editTextErrorMessage);
+    				tverrormessage.setText("Username does not exist");
     			}
     		}
     	});
@@ -145,10 +146,17 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
             	final TextView tvcreate = (TextView) findViewById(R.id.createnewusertext);
     			String input = tvcreate.getText().toString();
-    			play = new Player(input);
-    			optionsSetup();
-    			final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
-    			tvusername.setText(input);
+    			if(sscgame.createUser(input))
+    			{
+    				optionsSetup();
+    				final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
+    				tvusername.setText(input);
+    			}
+    			else
+    			{
+    				final TextView tvcreateuserfail = (TextView) findViewById(R.id.editTextCreateUserFail);
+    				tvcreateuserfail.setText("Username must be fewer than twelve characters in length.");
+    			}
             }
         });
 

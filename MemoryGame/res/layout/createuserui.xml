@@ -58,6 +58,14 @@
                 android:layout_gravity="center|center_horizontal|center_vertical"
                 android:text="@string/cancelS" />
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextCreateUserFail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="none" />
+
     </LinearLayout>
 
 </LinearLayout>

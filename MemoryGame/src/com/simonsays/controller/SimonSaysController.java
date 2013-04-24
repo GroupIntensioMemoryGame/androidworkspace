@@ -63,4 +63,16 @@ public class SimonSaysController {
 			return false;
 		}
 	}
+
+	public boolean createUser(String input) {
+		if(input.length() < 13)
+		{
+			players.add(new Player(input));
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
