@@ -5,6 +5,13 @@
     android:orientation="vertical"
 	android:background="@raw/whitebackground">
 
+    <TextView
+        android:id="@+id/gameviewtextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/$error_message"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <GridView
         android:id="@+id/gamegridview"
         android:layout_width="wrap_content"

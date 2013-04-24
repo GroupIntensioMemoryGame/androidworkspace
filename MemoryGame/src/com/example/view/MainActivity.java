@@ -237,6 +237,14 @@ public class MainActivity extends Activity {
     	}
     	iagame.prepare();
     	gameview.setAdapter(iagame);
+    	gameview.setOnItemClickListener(new OnItemClickListener() 
+    	{
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
+            {
+            	TextView tvgameviewdebug = (TextView) findViewById(R.id.gameviewtextview);
+            	tvgameviewdebug.setText("Selected Item " + position);
+        	}
+        });
     }
     
 }
