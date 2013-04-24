@@ -14,11 +14,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
-	// Final Static Variables
-	final public int CIRCLE = 0;
-	final public int TRIANGLE = 1;
-	final public int SQUARE = 2;
-	
     private Context mContext;
 	private ArrayList<Integer> shapeView;
 

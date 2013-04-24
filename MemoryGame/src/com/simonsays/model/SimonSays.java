@@ -6,14 +6,14 @@ import java.util.*;
 public class SimonSays
 {
 	// Instance Variables
-	private ArrayList<Integer> computerSequence;
+	private final Set<ISimonSaysObserver> observers = new HashSet<ISimonSaysObserver>();
 	private ArrayList<GameObject> shapeOrder;
+	private ArrayList<Integer> computerSequence;
+	private Score score;
+	private Player player;
 	private int roundNumber;
 	private int numGameObjects;
-	private Score score;
 	private int curIndexSeq;
-	private Player player;
-	private final Set<ISimonSaysObserver> observers = new HashSet<ISimonSaysObserver>();
 	
 	// Constructor
 	public SimonSays(Player p, int nGO)

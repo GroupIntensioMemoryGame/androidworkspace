@@ -177,7 +177,6 @@ public class MainActivity extends Activity {
     	bashapes.add(cbtriangle.isChecked());
     	bashapes.add(cbcircle.isChecked());
     	
-    	setContentView(R.layout.gameui);
     	ArrayList<Integer> alcolors = new ArrayList<Integer>();
     	ArrayList<Integer> alshapes = new ArrayList<Integer>();
     	for(int i = 0; i < bacolors.size(); i++)
@@ -194,6 +193,13 @@ public class MainActivity extends Activity {
     			alshapes.add(i);
     		}
     	}
+    	
+    	if(alcolors.size() == 0 || alshapes.size() == 0)
+    	{
+    		return;
+    	}
+    	
+    	setContentView(R.layout.gameui);
     	
     	sscgame.play(play, alshapes, alcolors, numberofobjects);
     	
