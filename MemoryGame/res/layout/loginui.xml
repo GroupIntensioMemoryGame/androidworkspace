@@ -65,6 +65,13 @@
         </LinearLayout>
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/editTextErrorMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="none" />
+
     <LinearLayout
         android:id="@+id/highscorecontainer"
         android:layout_width="match_parent"

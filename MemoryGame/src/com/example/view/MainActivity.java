@@ -53,10 +53,16 @@ public class MainActivity extends Activity {
     			// create player from login string
     			final TextView tvlogins = (TextView) findViewById(R.id.loginusertext);
     			String input = tvlogins.getText().toString();
-    			play = new Player(input);
-    			optionsSetup();
-    			final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
-    			tvusername.setText(input);
+    			if(sscgame.login(input))
+    			{
+    				optionsSetup();
+    				final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
+    				tvusername.setText(input);
+    			}
+    			else
+    			{
+    				
+    			}
     		}
     	});
     	

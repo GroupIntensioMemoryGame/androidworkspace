@@ -9,9 +9,13 @@ import com.simonsays.model.SimonSays;
 public class SimonSaysController {
 	
 	private SimonSays ss;
+	private ArrayList<Player> players;
 	
 	public SimonSaysController(){
+		// Read players from file
+		players = new ArrayList<Player>();
 		
+		// Read high scores from file
 	}
 	
 	public SimonSays getGame(){
@@ -35,6 +39,28 @@ public class SimonSaysController {
 		}
 		else{
 			ss.endGame(ss.getRoundNumber());
+		}
+	}
+	
+	public Boolean login(String username)
+	{
+		Boolean isValid = false;
+		
+		for(int i = 0; i < players.size(); i++)
+		{
+			if(players.get(i).getName().equals(username))
+			{
+				isValid = true;
+			}
+		}
+		
+		if(isValid)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }
