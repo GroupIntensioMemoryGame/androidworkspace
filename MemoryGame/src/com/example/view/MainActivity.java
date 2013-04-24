@@ -47,6 +47,8 @@ public class MainActivity extends Activity {
     {
         setContentView(R.layout.loginui);
     	final Button blogin = (Button) findViewById(R.id.loginbutton);
+		final TextView tverrormessage = (TextView) findViewById(R.id.editTextErrorMessage);
+		tverrormessage.setText("");
     	blogin.setOnClickListener(new View.OnClickListener() {
     		public void onClick(View v) {
     			// get text from login
@@ -61,7 +63,6 @@ public class MainActivity extends Activity {
     			}
     			else
     			{
-    				final TextView tverrormessage = (TextView) findViewById(R.id.editTextErrorMessage);
     				tverrormessage.setText("Username does not exist");
     			}
     		}
