@@ -48,4 +48,8 @@ public class Score implements Comparable<Score>
 		return 0;
 	}
 	
+	public String toString()
+	{
+		return userName + " " + sequenceLength + " " + numObjects;
+	}
 }

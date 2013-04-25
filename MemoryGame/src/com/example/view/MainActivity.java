@@ -65,8 +65,10 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     		public void onClick(View v) {
     			final TextView tvlogins = (TextView) findViewById(R.id.loginusertext);
     			String input = tvlogins.getText().toString();
-    			//SimonSaysController sscgame checks for username, and denies access until a reasonable name is given.
-    			if(sscgame.login(input))
+    			
+    			// Checks for a valid user name
+    			play = sscgame.login(input);
+    			if(play != null)
     			{
     				optionsSetup();
     				final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
@@ -78,6 +80,10 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     			}
     		}
     	});
+    	
+    	// High Score list
+    	final TextView tvScore = (TextView) findViewById(R.id.highscoretextboxlist);
+    	tvScore.setText(sscgame.getHighScores());
     	
     	//Create New User Button
     	final Button bcreateuser = (Button) findViewById(R.id.createnewuserbutton);
@@ -264,13 +270,13 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
             {            	
             	sscgame.compareSequence(position);
             	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
-            	settingsAndPlaceTaskStart();
         	}
         });
     }
 
-    public void showSequence(ArrayList<Integer> sequence)
+    public void showSequence()
     {
+    	settingsAndPlaceTaskStart();
 //    	for(int i = 0; i < sequence.size(); i++)
 //    	{
 //    		iagame.greyShape(sequence.get(i));
@@ -312,6 +318,7 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 		{
 			// Display end of round message and wait for user
 			// Show sequence
+			//showSequence();
 		}
 		else
 		{
@@ -321,7 +328,6 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 			// Display score
 			
 			// Exit game
-			//setContentView(R.layout.optionsui);
 			optionsSetup();
 		}
 	}
