@@ -75,6 +75,7 @@
                 android:id="@+id/checkboxredcolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/redS"
                 android:textSize="25sp" />
 
@@ -82,6 +83,7 @@
                 android:id="@+id/checkboxbluecolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/blueS"
                 android:textSize="25sp" />
 
@@ -89,6 +91,7 @@
                 android:id="@+id/checkboxgreencolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/greenS"
                 android:textSize="25sp" />
 
@@ -96,6 +99,7 @@
                 android:id="@+id/checkboxpurplecolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/purpleS"
                 android:textSize="25sp" />
 
@@ -103,6 +107,7 @@
                 android:id="@+id/checkboxorangecolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/orangeS"
                 android:textSize="25sp" />
 
@@ -110,9 +115,9 @@
                 android:id="@+id/checkboxyellowcolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/yellowS"
                 android:textSize="25sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -133,6 +138,7 @@
                 android:id="@+id/checkboxsquareshape"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/squareS"
                 android:textSize="25sp" />
 
@@ -140,6 +146,7 @@
                 android:id="@+id/checkboxtriangleshape"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/triangleS"
                 android:textSize="25sp" />
 
@@ -147,9 +154,9 @@
                 android:id="@+id/checkboxcircleshape"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/circleS"
                 android:textSize="25sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -186,9 +193,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/diamondS"
                     android:textSize="25sp" />
-
             </RadioGroup>
-
         </LinearLayout>
 
         <LinearLayout
@@ -234,7 +239,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left" />
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout

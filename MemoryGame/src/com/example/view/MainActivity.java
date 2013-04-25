@@ -6,9 +6,12 @@ import com.simonsays.controller.SimonSaysController;
 import com.simonsays.model.*;
 import com.example.memorygame.R;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.app.Activity;
+import android.content.Context;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -51,15 +54,18 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     public void loginSetup()
     {
         setContentView(R.layout.loginui);
-    	final Button blogin = (Button) findViewById(R.id.loginbutton);
+        
+    	//This is the TextView for errors
 		final TextView tverrormessage = (TextView) findViewById(R.id.editTextErrorMessage);
 		tverrormessage.setText("");
+		
+		//Login Button
+    	final Button blogin = (Button) findViewById(R.id.loginbutton);
     	blogin.setOnClickListener(new View.OnClickListener() {
     		public void onClick(View v) {
-    			// get text from login
-    			// create player from login string
     			final TextView tvlogins = (TextView) findViewById(R.id.loginusertext);
     			String input = tvlogins.getText().toString();
+    			//SimonSaysController sscgame checks for username, and denies access until a reasonable name is given.
     			if(sscgame.login(input))
     			{
     				optionsSetup();
@@ -73,6 +79,7 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     		}
     	});
     	
+    	//Create New User Button
     	final Button bcreateuser = (Button) findViewById(R.id.createnewuserbutton);
         bcreateuser.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -81,9 +88,45 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
         });
     }
     
+    public void createnewuserSetup()
+    {
+        setContentView(R.layout.createuserui);
+        
+        //Create Button
+        final Button bcreate = (Button) findViewById(R.id.createbutton);
+        bcreate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	final TextView tvcreate = (TextView) findViewById(R.id.createnewusertext);
+    			String usernameinput = tvcreate.getText().toString();
+    			
+    			play = sscgame.createUser(usernameinput);
+    			if(play != null)
+    			{
+    				optionsSetup();
+    			}
+    			else
+    			{
+    				final TextView tvcreateuserfail = (TextView) findViewById(R.id.editTextCreateUserFail);
+    				tvcreateuserfail.setText("Username must be unique and must contain fewer than twelve characters in length.");
+    			}
+            }
+        });
+        
+        //Cancel Button
+        final Button bcancel = (Button) findViewById(R.id.cancelbutton);
+        bcancel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	loginSetup();
+            }
+        });
+    }
+    
     public void optionsSetup()
     {
 		setContentView(R.layout.optionsui);
+
+		final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
+		tvusername.setText(play.getName());
 		
 		final Spinner snumberofobjects = (Spinner) findViewById(R.id.numberofobjectsdropdown);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -139,39 +182,6 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
         rbdiamondlayout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	gridlayout = false;
-            }
-        });
-    }
-    
-    public void createnewuserSetup()
-    {
-        setContentView(R.layout.createuserui);
-
-        final Button bcreate = (Button) findViewById(R.id.createbutton);
-        bcreate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	final TextView tvcreate = (TextView) findViewById(R.id.createnewusertext);
-    			String input = tvcreate.getText().toString();
-    			
-    			play = sscgame.createUser(input);
-    			if(play != null)
-    			{
-    				optionsSetup();
-    				final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
-    				tvusername.setText(input);
-    			}
-    			else
-    			{
-    				final TextView tvcreateuserfail = (TextView) findViewById(R.id.editTextCreateUserFail);
-    				tvcreateuserfail.setText("Username must be unique and must contain fewer than twelve characters in length.");
-    			}
-            }
-        });
-
-        final Button bcancel = (Button) findViewById(R.id.cancelbutton);
-        bcancel.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	loginSetup();
             }
         });
     }
@@ -254,23 +264,47 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
             {            	
             	sscgame.compareSequence(position);
             	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
+            	settingsAndPlaceTaskStart();
         	}
         });
     }
 
     public void showSequence(ArrayList<Integer> sequence)
     {
-    	for(int i = 0; i < sequence.size(); i++)
-    	{
-    		iagame.greyShape(sequence.get(i));
-    		try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    		iagame.revertShape(sequence.get(i));
-    	}
+//    	for(int i = 0; i < sequence.size(); i++)
+//    	{
+//    		iagame.greyShape(sequence.get(i));
+//    		try {
+//				Thread.sleep(100);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//    		iagame.revertShape(sequence.get(i));
+//    	}
+    }
+    
+//    http://stackoverflow.com/questions/9505109/update-current-activity-view-behind-while-showing-loading-dialog
+    private void settingsAndPlaceTaskStart() {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+            	for(int i = 0; i < sscgame.getGame().getComputerSequence().size(); i++)
+            	{
+            		iagame.greyShape(sscgame.getGame().getComputerSequence().get(i));
+            		for(int j = 0; j < 100000000; j++)
+            		{
+            			
+            		}
+            		iagame.revertShape(sscgame.getGame().getComputerSequence().get(i));
+            	}
+				return null;
+            }
+
+            protected void onProgressUpdate(Void... param) {
+                //Prepare message
+            }
+        }.execute();
     }
 
 	public void update(SimonSays ss) {

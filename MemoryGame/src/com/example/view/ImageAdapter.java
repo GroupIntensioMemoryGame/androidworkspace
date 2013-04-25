@@ -75,7 +75,7 @@ public class ImageAdapter extends BaseAdapter {
     {
     	//THIS IS WHY THE SHAPES ARE TURING INTO SQUARE BOXES
     	//What I am trying to do is change those shapes from a grey box and back
-//    	currentShapes[place] = shapeView.get(place);
+    	currentShapes[place] = shapeView.get(place);
     	notifyDataSetChanged();
     }
     
