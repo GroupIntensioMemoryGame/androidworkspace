@@ -11,12 +11,13 @@ public class Score implements Comparable<Score>
 	private int time;
 	
 	// Constructor
-	public Score(String un, int no, int sl, int t)
+	//public Score(String un, int no, int sl, int t)
+	public Score(String un, int no, int sl)
 	{
 		userName = un;
 		numObjects = no;
 		sequenceLength = sl;
-		time = t;
+		//time = t;
 	}
 	
 	// Instance Methods

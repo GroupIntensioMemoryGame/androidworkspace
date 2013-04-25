@@ -21,7 +21,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements ISimonSaysObserver {
 
 	SimonSaysController sscgame = new SimonSaysController();
 	Player play;
@@ -152,7 +152,9 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
             	final TextView tvcreate = (TextView) findViewById(R.id.createnewusertext);
     			String input = tvcreate.getText().toString();
-    			if(sscgame.createUser(input))
+    			
+    			play = sscgame.createUser(input);
+    			if(play != null)
     			{
     				optionsSetup();
     				final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
@@ -161,7 +163,7 @@ public class MainActivity extends Activity {
     			else
     			{
     				final TextView tvcreateuserfail = (TextView) findViewById(R.id.editTextCreateUserFail);
-    				tvcreateuserfail.setText("Username must be fewer than twelve characters in length.");
+    				tvcreateuserfail.setText("Username must be unique and must contain fewer than twelve characters in length.");
     			}
             }
         });
@@ -223,7 +225,7 @@ public class MainActivity extends Activity {
     	gameview = (GridView) findViewById(R.id.gamegridview);
     	iagame = new ImageAdapter(this);
     	
-    	sscgame.play(play, alshapes, alcolors, numberofobjects);
+    	sscgame.play(play, alshapes, alcolors, numberofobjects, this);
     	
     	int temp = 0;
     	if(gridlayout)
@@ -241,30 +243,17 @@ public class MainActivity extends Activity {
     		iagame.addShape(sscgame.getGameObject(i));
     	}
     	
-    	for(int i = 0; i < 5; i++)
-    	{
-    		sscgame.getGame().increaseSequence();
-    	}
     	iagame.prepare();
     	gameview.setAdapter(iagame);
+    	
+    	final TextView tvgameviewdebug = (TextView) findViewById(R.id.gameviewtextview);
+    	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
     	gameview.setOnItemClickListener(new OnItemClickListener() 
     	{
-    		int clicks = 0;
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
-            {
-            	//Boolean matches sequence (if false closes to results)
-            	//Boolean completed sequence (until true lets player guess, then shows incremented sequence)
-            	TextView tvgameviewdebug = (TextView) findViewById(R.id.gameviewtextview);
-            	clicks++;
-            	
-            	if(clicks == sscgame.getGame().getComputerSequence().size())
-            	{
-            		clicks = 0;
-            		sscgame.getGame().increaseSequence();
-            		showSequence(sscgame.getGame().getComputerSequence());
-            	}
-            	tvgameviewdebug.setText("Pos: " + position + "Clicks: " + clicks);
-            	//sscgame.compareSequence(position);
+            {            	
+            	sscgame.compareSequence(position);
+            	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
         	}
         });
     }
@@ -284,15 +273,23 @@ public class MainActivity extends Activity {
     	}
     }
 
-//	public void update(SimonSays ss) {
-//		if(ss.getIsActive())
-//		{
-//			
-//		}
-//		else
-//		{
-//			setContentView(R.layout.optionsui);
-//		}
-//	}
+	public void update(SimonSays ss) {
+		if(ss.getIsActive())
+		{
+			// Display end of round message and wait for user
+			// Show sequence
+		}
+		else
+		{
+			// Store score
+			sscgame.storeScore(ss.getScore());
+			
+			// Display score
+			
+			// Exit game
+			//setContentView(R.layout.optionsui);
+			optionsSetup();
+		}
+	}
     
 }

@@ -25,6 +25,7 @@ public class SimonSays
 		computerSequence = new ArrayList<Integer>();
 		shapeOrder = new ArrayList<GameObject>();
 		isActive = true;
+		increaseSequence();
 	}
 	
 	// Instance Methods
@@ -48,19 +49,39 @@ public class SimonSays
 		return score;
 	}
 	
-	public void increaseSequence()
+	private void increaseSequence()
 	{
 		curIndexSeq = 0;
+		
 		// Increment the round number
 		roundNumber++;
+		
 		// Add a random game object to the end of the sequence
 		int gOID = (int)(numGameObjects * Math.random());
 		computerSequence.add(gOID);
-		notifyObservers();
 	}
 	
-	public boolean compareInput(int input){
-		return computerSequence.get(curIndexSeq) == input;
+	public void compareInput(int input){
+		if(computerSequence.get(curIndexSeq) == input)
+		{
+			if(curIndexSeq == (roundNumber - 1))
+			{
+				// End round
+				increaseSequence();
+				notifyObservers();
+			}
+			else
+			{
+				// Increase current index
+				increaseCurIndex();
+			}
+		}
+		else
+		{
+			// End game
+			endGame();
+			notifyObservers();
+		}
 	}
 	
 	public void increaseCurIndex(){
@@ -95,7 +116,9 @@ public class SimonSays
 	
 	public void endGame() {
 		//score = new Score(player.getName(), numGameObjects, roundNumber, time);
-		notifyObservers();
+		score = new Score(player.getName(), numGameObjects, roundNumber);
+		
+		isActive = false;
 	}
 	
 	public GameObject getObject(int loc)
