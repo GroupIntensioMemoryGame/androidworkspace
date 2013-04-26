@@ -7,6 +7,7 @@ import com.simonsays.model.GameObject;
 import com.simonsays.model.SimonSays;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -27,7 +28,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return null;
+    	return currentShapes[position];
     }
 
     public long getItemId(int position) {
@@ -41,12 +42,12 @@ public class ImageAdapter extends BaseAdapter {
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
+            imageView.setPadding(12, 12, 12, 12);
         } else {
             imageView = (ImageView) convertView;
         }
         
-        imageView.setImageResource(currentShapes[position]);
+        imageView.setBackgroundResource(currentShapes[position]);
         return imageView;
     }
     
@@ -67,11 +68,12 @@ public class ImageAdapter extends BaseAdapter {
     
     public void greyShape(int place)
     {
-    	currentShapes[place] = R.drawable.sgrey;
+//    	AnimationDrawable adgs = (AnimationDrawable) this.getItem(place);
+//    	adgs.start();
     	notifyDataSetChanged();
     }
     
-    public void revertShape(int place)
+    public void revertShape(int place, View v)
     {
     	//THIS IS WHY THE SHAPES ARE TURING INTO SQUARE BOXES
     	//What I am trying to do is change those shapes from a grey box and back
@@ -81,17 +83,17 @@ public class ImageAdapter extends BaseAdapter {
     
     // references to our images
     private Integer[] availableShapes = {
-    		R.drawable.sr, R.drawable.sb,
-    		R.drawable.sg, R.drawable.sp,
-    		R.drawable.so, R.drawable.sy,
+    		R.drawable.asr, R.drawable.asb,
+    		R.drawable.asg, R.drawable.asp,
+    		R.drawable.aso, R.drawable.asy,
     		
-    		R.drawable.tr, R.drawable.tb,
-    		R.drawable.tg, R.drawable.tp,
-    		R.drawable.to, R.drawable.ty,
+    		R.drawable.atr, R.drawable.atb,
+    		R.drawable.atg, R.drawable.atp,
+    		R.drawable.ato, R.drawable.aty,
     		
-    		R.drawable.cr, R.drawable.cb,
-    		R.drawable.cg, R.drawable.cp,
-    		R.drawable.co, R.drawable.cy
+    		R.drawable.acr, R.drawable.acb,
+    		R.drawable.acg, R.drawable.acp,
+    		R.drawable.aco, R.drawable.acy,
     };
     private Integer[] currentShapes;
 }

@@ -10,16 +10,21 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.view.Menu;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.GridLayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -266,51 +271,35 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
     	gameview.setOnItemClickListener(new OnItemClickListener() 
     	{
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
+            @SuppressLint("NewApi")
+			public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
             {            	
             	sscgame.compareSequence(position);
             	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
+            	showSequence(sscgame.getGame().getComputerSequence());
+            	AnimationDrawable frameAnimation = (AnimationDrawable)v.getBackground();
+            	frameAnimation.stop();
+            	frameAnimation.start();
         	}
         });
     }
 
-    public void showSequence()
+    public void showSequence(final ArrayList<Integer> sequence)
     {
-    	settingsAndPlaceTaskStart();
-//    	for(int i = 0; i < sequence.size(); i++)
-//    	{
-//    		iagame.greyShape(sequence.get(i));
-//    		try {
-//				Thread.sleep(100);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//    		iagame.revertShape(sequence.get(i));
-//    	}
-    }
-    
-//    http://stackoverflow.com/questions/9505109/update-current-activity-view-behind-while-showing-loading-dialog
-    private void settingsAndPlaceTaskStart() {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-            	for(int i = 0; i < sscgame.getGame().getComputerSequence().size(); i++)
-            	{
-            		iagame.greyShape(sscgame.getGame().getComputerSequence().get(i));
-            		for(int j = 0; j < 100000000; j++)
-            		{
-            			
-            		}
-            		iagame.revertShape(sscgame.getGame().getComputerSequence().get(i));
-            	}
-				return null;
-            }
-
-            protected void onProgressUpdate(Void... param) {
-                //Prepare message
-            }
-        }.execute();
+		final Thread animator = new Thread(new Runnable()
+		{
+			@Override
+			public void run() 
+			{
+		    	for(int i = 0; i < sequence.size(); i++)
+		    	{
+		    		AnimationDrawable ad1 = (AnimationDrawable) gameview.getChildAt(sequence.get(i)).getBackground();
+		        	ad1.stop();
+		        	ad1.start();
+		    	}
+			}
+		});
+		animator.run();
     }
 
 	public void update(SimonSays ss) {
