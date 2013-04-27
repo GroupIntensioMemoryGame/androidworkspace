@@ -57,5 +57,10 @@
         <item>Large</item>
     </string-array>
         <string name="$error_message">error_message</string>
+        <string name="oneS">"1. "</string>
+        <string name="twoS">"2. "</string>
+        <string name="threeS">"3. "</string>
+        <string name="fourS">"4. "</string>
+        <string name="fiveS">"5. "</string>
     
 </resources>

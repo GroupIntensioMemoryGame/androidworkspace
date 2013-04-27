@@ -42,7 +42,7 @@ public class ImageAdapter extends BaseAdapter {
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(12, 12, 12, 12);
+            imageView.setPadding(16, 16, 16, 16);
         } else {
             imageView = (ImageView) convertView;
         }
@@ -64,21 +64,6 @@ public class ImageAdapter extends BaseAdapter {
     {
     	int temp = ((go.getShape() * 6) + go.getColor());
     	shapeView.add(availableShapes[temp]);
-    }
-    
-    public void greyShape(int place)
-    {
-//    	AnimationDrawable adgs = (AnimationDrawable) this.getItem(place);
-//    	adgs.start();
-    	notifyDataSetChanged();
-    }
-    
-    public void revertShape(int place, View v)
-    {
-    	//THIS IS WHY THE SHAPES ARE TURING INTO SQUARE BOXES
-    	//What I am trying to do is change those shapes from a grey box and back
-    	currentShapes[place] = shapeView.get(place);
-    	notifyDataSetChanged();
     }
     
     // references to our images

@@ -1,6 +1,7 @@
 package com.example.view;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.simonsays.controller.SimonSaysController;
 import com.simonsays.model.*;
@@ -40,7 +41,6 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 	static int countn = 0;
 	static int presscount = 0;
 	static int sequenceSize = 1;
-	static boolean firstsequence = true;
 	
 	static GridView gameview;
 	ImageAdapter iagame;
@@ -112,8 +112,48 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	});
     	
     	// High Score list
-    	final TextView tvScore = (TextView) findViewById(R.id.highscoretextboxlist);
-    	tvScore.setText(sscgame.getHighScores());
+    	//final TextView tvusers = (TextView) findViewById(R.id.highscoretextboxlist);
+    	final TextView tvuser1 = (TextView) findViewById(R.id.highscoreuser1);
+    	final TextView tvuser2 = (TextView) findViewById(R.id.highscoreuser2);
+    	final TextView tvuser3 = (TextView) findViewById(R.id.highscoreuser3);
+    	final TextView tvuser4 = (TextView) findViewById(R.id.highscoreuser4);
+    	final TextView tvuser5 = (TextView) findViewById(R.id.highscoreuser5);
+    	final TextView tvsequences1 = (TextView) findViewById(R.id.highscoresequences1);
+    	final TextView tvsequences2 = (TextView) findViewById(R.id.highscoresequences2);
+    	final TextView tvsequences3 = (TextView) findViewById(R.id.highscoresequences3);
+    	final TextView tvsequences4 = (TextView) findViewById(R.id.highscoresequences4);
+    	final TextView tvsequences5 = (TextView) findViewById(R.id.highscoresequences5);
+//    	final TextView tvtime1 = (TextView) findViewById(R.id.highscoretime1);
+//    	final TextView tvtime2 = (TextView) findViewById(R.id.highscoretime2);
+//    	final TextView tvtime3 = (TextView) findViewById(R.id.highscoretime3);
+//    	final TextView tvtime4 = (TextView) findViewById(R.id.highscoretime4);
+//    	final TextView tvtime5 = (TextView) findViewById(R.id.highscoretime5);
+    	final TextView tvobjects1 = (TextView) findViewById(R.id.highscoreobjects1);
+    	final TextView tvobjects2 = (TextView) findViewById(R.id.highscoreobjects2);
+    	final TextView tvobjects3 = (TextView) findViewById(R.id.highscoreobjects3);
+    	final TextView tvobjects4 = (TextView) findViewById(R.id.highscoreobjects4);
+    	final TextView tvobjects5 = (TextView) findViewById(R.id.highscoreobjects5);
+    	Scanner highscores = new Scanner(sscgame.getHighScores());
+    	tvuser1.setText(highscores.next());
+    	tvsequences1.setText(highscores.next());
+//    	tvtime1.setText(highscores.next());
+    	tvobjects1.setText(highscores.next());
+    	tvuser2.setText(highscores.next());
+    	tvsequences2.setText(highscores.next());
+//    	tvtime2.setText(highscores.next());
+    	tvobjects2.setText(highscores.next());
+    	tvuser3.setText(highscores.next());
+    	tvsequences3.setText(highscores.next());
+//    	tvtime3.setText(highscores.next());
+    	tvobjects3.setText(highscores.next());
+    	tvuser4.setText(highscores.next());
+    	tvsequences4.setText(highscores.next());
+//    	tvtime4.setText(highscores.next());
+    	tvobjects4.setText(highscores.next());
+    	tvuser5.setText(highscores.next());
+    	tvsequences5.setText(highscores.next());
+//    	tvtime5.setText(highscores.next());
+    	tvobjects5.setText(highscores.next());
     	
     	//Create New User Button
     	final Button bcreateuser = (Button) findViewById(R.id.createnewuserbutton);
@@ -297,7 +337,6 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 
 		presscount = 0;
 		sequenceSize = 1;
-		firstsequence = true;
     	gameview.setOnItemClickListener(new OnItemClickListener() 
     	{
             @SuppressLint("NewApi")
@@ -314,9 +353,9 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
             	}
 
             	
-//            	AnimationDrawable frameAnimation = (AnimationDrawable)v.getBackground();
-//            	frameAnimation.stop();
-//            	frameAnimation.start();
+            	AnimationDrawable frameAnimation = (AnimationDrawable)v.getBackground();
+            	frameAnimation.stop();
+            	frameAnimation.start();
         	}
         });
     	
@@ -325,18 +364,10 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 
     public void showSequence(final ArrayList<Integer> sequence)
     {
-    	if(firstsequence)
-    	{
-    		handler.postDelayed(new AnimatorRunnable(), 1000);
-    		firstsequence = false;
-    	}
-    	else
-    	{
-    		for(int i = 0; i < sequence.size(); i++)
-			{
-    			handler.postDelayed(new AnimatorRunnable(), 1000 * i);
-			}
-    	}
+		for(int i = 0; i < sequence.size(); i++)
+		{
+			handler.postDelayed(new AnimatorRunnable(), 1000 * (i+1));
+		}
 		countn = 0;
     }
 
