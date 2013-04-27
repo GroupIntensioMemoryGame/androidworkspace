@@ -9,6 +9,7 @@ import com.example.memorygame.R;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -31,20 +32,44 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements ISimonSaysObserver {
 
-	SimonSaysController sscgame = new SimonSaysController();
+	static SimonSaysController sscgame = new SimonSaysController();
 	Player play;
 	int numberofobjects = 0;
 	int objectsize = 0;
 	boolean gridlayout = true;
+	static int countn = 0;
+	static int presscount = 0;
+	static int sequenceSize = 1;
+	static boolean firstsequence = true;
 	
-	GridView gameview;
+	static GridView gameview;
 	ImageAdapter iagame;
-	Handler handler;
+	static final Handler handler = new Handler()
+	{
+		@Override
+		public void handleMessage(final Message msg)
+		{
+			super.handleMessage(msg);
+    		AnimationDrawable ad1 = (AnimationDrawable) gameview.getChildAt(sscgame.getGame().getComputerSequence().get(countn)).getBackground();
+    		countn++;
+        	ad1.stop();
+        	ad1.start();
+        	gameview.refreshDrawableState();
+		}
+	};
+	
+	private class AnimatorRunnable implements Runnable
+	{
+		@Override
+		public void run() 
+		{
+			handler.sendMessage(new Message());
+		}
+	};
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        handler = new Handler();
         loginSetup();
     }
 
@@ -269,6 +294,10 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	
     	final TextView tvgameviewdebug = (TextView) findViewById(R.id.gameviewtextview);
     	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
+
+		presscount = 0;
+		sequenceSize = 1;
+		firstsequence = true;
     	gameview.setOnItemClickListener(new OnItemClickListener() 
     	{
             @SuppressLint("NewApi")
@@ -276,30 +305,39 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
             {            	
             	sscgame.compareSequence(position);
             	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
-            	showSequence(sscgame.getGame().getComputerSequence());
-            	AnimationDrawable frameAnimation = (AnimationDrawable)v.getBackground();
-            	frameAnimation.stop();
-            	frameAnimation.start();
+            	presscount++;
+            	if(presscount == sequenceSize)
+            	{
+            		showSequence(sscgame.getGame().getComputerSequence());
+            		presscount = 0;
+            		sequenceSize += 1;
+            	}
+
+            	
+//            	AnimationDrawable frameAnimation = (AnimationDrawable)v.getBackground();
+//            	frameAnimation.stop();
+//            	frameAnimation.start();
         	}
         });
+    	
+		showSequence(sscgame.getGame().getComputerSequence());
     }
 
     public void showSequence(final ArrayList<Integer> sequence)
     {
-		final Thread animator = new Thread(new Runnable()
-		{
-			@Override
-			public void run() 
+    	if(firstsequence)
+    	{
+    		handler.postDelayed(new AnimatorRunnable(), 1000);
+    		firstsequence = false;
+    	}
+    	else
+    	{
+    		for(int i = 0; i < sequence.size(); i++)
 			{
-		    	for(int i = 0; i < sequence.size(); i++)
-		    	{
-		    		AnimationDrawable ad1 = (AnimationDrawable) gameview.getChildAt(sequence.get(i)).getBackground();
-		        	ad1.stop();
-		        	ad1.start();
-		    	}
+    			handler.postDelayed(new AnimatorRunnable(), 1000 * i);
 			}
-		});
-		animator.run();
+    	}
+		countn = 0;
     }
 
 	public void update(SimonSays ss) {
