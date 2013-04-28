@@ -62,5 +62,9 @@
         <string name="threeS">"3. "</string>
         <string name="fourS">"4. "</string>
         <string name="fiveS">"5. "</string>
+        <string name="rankS">Rank: </string>
+        <string name="objectsS">Objects:</string>
+        <string name="timeS">Time:</string>
+        <string name="sequencesS">Sequences:</string>
     
 </resources>

@@ -16,11 +16,11 @@ public class SimonSaysController {
 		
 		// Read high scores from file
 		highScores = new ArrayList<Score>();
-		highScores.add(new Score("Steve", 4, 800));
-		highScores.add(new Score("Bob", 4, 780));
-		highScores.add(new Score("nospace", 16, 300));
-		highScores.add(new Score("Steve", 16, 100));
-		highScores.add(new Score("Steve", 4, 2));
+		highScores.add(new Score("Steve", 4, 8));
+		highScores.add(new Score("Bob", 4, 7));
+		highScores.add(new Score("nospace", 16, 3));
+		highScores.add(new Score("Steve", 16, 2));
+		highScores.add(new Score("Steve", 4, 1));
 	}
 	
 	public SimonSays getGame(){

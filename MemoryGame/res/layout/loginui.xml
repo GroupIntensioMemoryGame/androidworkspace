@@ -114,7 +114,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="left"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:paddingRight="30dp" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rankS"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
                     android:id="@+id/TextView16"
@@ -150,13 +158,22 @@
                     android:layout_height="wrap_content"
                     android:text="@string/fiveS"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="130dp"
                 android:layout_height="match_parent"
                 android:gravity="left"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:paddingRight="1dp" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/usernameS"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
                     android:id="@+id/highscoreuser1"
@@ -201,6 +218,13 @@
                 android:orientation="vertical" >
 
                 <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sequencesS"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
                     android:id="@+id/highscoresequences1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -241,6 +265,13 @@
                 android:layout_height="match_parent"
                 android:gravity="left"
                 android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/timeS"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
                     android:id="@+id/highscoretime1"
@@ -285,6 +316,13 @@
                 android:orientation="vertical" >
 
                 <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/objectsS"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
                     android:id="@+id/highscoreobjects1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -319,6 +357,7 @@
                     android:text="@string/text_error"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

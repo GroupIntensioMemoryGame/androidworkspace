@@ -2,6 +2,8 @@ package com.example.view;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.simonsays.controller.SimonSaysController;
 import com.simonsays.model.*;
@@ -35,15 +37,27 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 
 	SimonSaysController sscgame = new SimonSaysController();
 	Player pcurrentplayer;
+	
 	int numberofobjects = 0;
 	int objectsize = 0;
 	int countn = 0;
 	int presscount = 0;
 	int sequenceSize = 1;
+	int duration = 0;
 	boolean gridlayout = true;
 	
 	GridView gameview;
 	ImageAdapter iagame;
+	Timer timer;
+	TimerTask timertask = new TimerTask() 
+	{
+		@Override
+		public void run()
+		{
+//			setTimeText("Time: " + duration);
+			duration++;
+		}
+	};
 	
 	//This helps animate each shape in the sequence
 	//countn increments up for the size of the sequence, starting from 0, and animates that number in the sequence
@@ -337,34 +351,44 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	}
     	gameview.setAdapter(iagame);
     	
-    	final TextView tvgameviewdebug = (TextView) findViewById(R.id.gameviewtextview);
-    	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
-
 		presscount = 0;
 		sequenceSize = 1;
     	gameview.setOnItemClickListener(new OnItemClickListener() 
     	{
             @SuppressLint("NewApi")
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
-            {            	
+            {
             	sscgame.compareSequence(position);
-            	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
             	presscount++;
-            	AnimationDrawable frameAnimation = (AnimationDrawable)v.getBackground();
-            	frameAnimation.stop();
-            	frameAnimation.start();
+//            	AnimationDrawable frameAnimation = (AnimationDrawable)v.getBackground();
+//            	frameAnimation.stop();
+//            	frameAnimation.start();
             	if(presscount == sequenceSize)
             	{
             		showSequence(sscgame.getGame().getComputerSequence());
             		presscount = 0;
             		sequenceSize += 1;
             	}
-
-            	
         	}
         });
     	
 		showSequence(sscgame.getGame().getComputerSequence());
+		timer = new Timer();
+		
+		try
+		{
+			timer.scheduleAtFixedRate(timertask, 1000, 1000);
+		}
+		catch(Exception e)
+		{
+			
+		}
+    }
+    
+    public void setTimeText(String a)
+    {
+    	final TextView tv = (TextView) findViewById(R.id.gameviewtextview);
+    	tv.setText("Time: " + duration);
     }
 
     public void showSequence(final ArrayList<Integer> sequence)
@@ -385,6 +409,11 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 		}
 		else
 		{
+			timer.cancel();
+			timer = null;
+			ss.getScore().setTime(duration);
+			duration = 0;
+			
 			// Store score
 			sscgame.storeScore(ss.getScore());
 			

@@ -40,6 +40,11 @@ public class Score implements Comparable<Score>
 	{
 		return time;
 	}
+	
+	public void setTime(int a)
+	{
+		time = a;
+	}
 
 	@Override
 	public int compareTo(Score o)
