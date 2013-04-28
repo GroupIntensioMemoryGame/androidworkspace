@@ -17,57 +17,9 @@ import android.widget.ImageView;
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
 	private ArrayList<Integer> shapeView;
-
-    public ImageAdapter(Context c) {
-        mContext = c;
-        shapeView = new ArrayList<Integer>();
-    }
-
-    public int getCount() {
-        return currentShapes.length;
-    }
-
-    public Object getItem(int position) {
-    	return currentShapes[position];
-    }
-
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    // create a new ImageView for each item referenced by the Adapter
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
-        if (convertView == null) {  // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(16, 16, 16, 16);
-        } else {
-            imageView = (ImageView) convertView;
-        }
-        
-        imageView.setBackgroundResource(currentShapes[position]);
-        return imageView;
-    }
-    
-    public void prepare()
-    {
-        currentShapes = new Integer[shapeView.size()];
-        for(int i = 0 ; i < shapeView.size(); i++)
-        {
-        	currentShapes[i] = shapeView.get(i);
-        }
-    }
-    
-    public void addShape(GameObject go)
-    {
-    	int temp = ((go.getShape() * 6) + go.getColor());
-    	shapeView.add(availableShapes[temp]);
-    }
     
     // references to our images
-    private Integer[] availableShapes = {
+    private Integer[] availableAnimations = {
     		R.drawable.asr, R.drawable.asb,
     		R.drawable.asg, R.drawable.asp,
     		R.drawable.aso, R.drawable.asy,
@@ -80,5 +32,45 @@ public class ImageAdapter extends BaseAdapter {
     		R.drawable.acg, R.drawable.acp,
     		R.drawable.aco, R.drawable.acy,
     };
-    private Integer[] currentShapes;
+
+    public ImageAdapter(Context c) {
+        mContext = c;
+        shapeView = new ArrayList<Integer>();
+    }
+
+    public int getCount() {
+        return shapeView.size();
+    }
+
+    public Object getItem(int position) {
+    	return shapeView.get(position);
+    }
+
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ImageView imageView;
+        if (convertView == null) 
+        {
+            imageView = new ImageView(mContext);
+            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setPadding(20, 20, 20, 20);
+        } 
+        else 
+        {
+            imageView = (ImageView) convertView;
+        }
+        
+        imageView.setBackgroundResource(shapeView.get(position));
+        return imageView;
+    }
+    
+    public void addShape(GameObject go)
+    {
+    	int temp = ((go.getShape() * 6) + go.getColor());
+    	shapeView.add(availableAnimations[temp]);
+    }
 }

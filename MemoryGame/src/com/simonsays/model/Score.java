@@ -50,6 +50,6 @@ public class Score implements Comparable<Score>
 	
 	public String toString()
 	{
-		return userName + " " + sequenceLength + " " + numObjects;
+		return userName + " " + sequenceLength + " " + time + " " + numObjects;
 	}
 }

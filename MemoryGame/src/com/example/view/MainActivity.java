@@ -33,18 +33,22 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements ISimonSaysObserver {
 
-	static SimonSaysController sscgame = new SimonSaysController();
-	Player play;
+	SimonSaysController sscgame = new SimonSaysController();
+	Player pcurrentplayer;
 	int numberofobjects = 0;
 	int objectsize = 0;
+	int countn = 0;
+	int presscount = 0;
+	int sequenceSize = 1;
 	boolean gridlayout = true;
-	static int countn = 0;
-	static int presscount = 0;
-	static int sequenceSize = 1;
 	
-	static GridView gameview;
+	GridView gameview;
 	ImageAdapter iagame;
-	static final Handler handler = new Handler()
+	
+	//This helps animate each shape in the sequence
+	//countn increments up for the size of the sequence, starting from 0, and animates that number in the sequence
+	//The caller of AnimatorRunnable sets countn back to 0 once it reaches the end of the sequence
+	final Handler handler = new Handler()
 	{
 		@Override
 		public void handleMessage(final Message msg)
@@ -58,6 +62,7 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 		}
 	};
 	
+	//This runs the handler, which animates one of the shapes in the sequence
 	private class AnimatorRunnable implements Runnable
 	{
 		@Override
@@ -67,20 +72,22 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 		}
 	};
 	
+	//Sets up the Activity, calls loginSetup
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loginSetup();
     }
 
-
+    //Inflate the menu
+    //This adds items to the action bar if they are present.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
     
+    //Sets the ui to loginui, and sets the values inside loginui to the appropriate value.
     public void loginSetup()
     {
         setContentView(R.layout.loginui);
@@ -97,12 +104,12 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     			String input = tvlogins.getText().toString();
     			
     			// Checks for a valid user name
-    			play = sscgame.login(input);
-    			if(play != null)
+    			pcurrentplayer = sscgame.login(input);
+    			
+    			//Play will equal null if the username is not allowed
+    			if(pcurrentplayer != null)
     			{
     				optionsSetup();
-    				final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
-    				tvusername.setText(input);
     			}
     			else
     			{
@@ -112,7 +119,6 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	});
     	
     	// High Score list
-    	//final TextView tvusers = (TextView) findViewById(R.id.highscoretextboxlist);
     	final TextView tvuser1 = (TextView) findViewById(R.id.highscoreuser1);
     	final TextView tvuser2 = (TextView) findViewById(R.id.highscoreuser2);
     	final TextView tvuser3 = (TextView) findViewById(R.id.highscoreuser3);
@@ -123,11 +129,11 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	final TextView tvsequences3 = (TextView) findViewById(R.id.highscoresequences3);
     	final TextView tvsequences4 = (TextView) findViewById(R.id.highscoresequences4);
     	final TextView tvsequences5 = (TextView) findViewById(R.id.highscoresequences5);
-//    	final TextView tvtime1 = (TextView) findViewById(R.id.highscoretime1);
-//    	final TextView tvtime2 = (TextView) findViewById(R.id.highscoretime2);
-//    	final TextView tvtime3 = (TextView) findViewById(R.id.highscoretime3);
-//    	final TextView tvtime4 = (TextView) findViewById(R.id.highscoretime4);
-//    	final TextView tvtime5 = (TextView) findViewById(R.id.highscoretime5);
+    	final TextView tvtime1 = (TextView) findViewById(R.id.highscoretime1);
+    	final TextView tvtime2 = (TextView) findViewById(R.id.highscoretime2);
+    	final TextView tvtime3 = (TextView) findViewById(R.id.highscoretime3);
+    	final TextView tvtime4 = (TextView) findViewById(R.id.highscoretime4);
+    	final TextView tvtime5 = (TextView) findViewById(R.id.highscoretime5);
     	final TextView tvobjects1 = (TextView) findViewById(R.id.highscoreobjects1);
     	final TextView tvobjects2 = (TextView) findViewById(R.id.highscoreobjects2);
     	final TextView tvobjects3 = (TextView) findViewById(R.id.highscoreobjects3);
@@ -136,24 +142,25 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	Scanner highscores = new Scanner(sscgame.getHighScores());
     	tvuser1.setText(highscores.next());
     	tvsequences1.setText(highscores.next());
-//    	tvtime1.setText(highscores.next());
+    	tvtime1.setText(highscores.next());
     	tvobjects1.setText(highscores.next());
     	tvuser2.setText(highscores.next());
     	tvsequences2.setText(highscores.next());
-//    	tvtime2.setText(highscores.next());
+    	tvtime2.setText(highscores.next());
     	tvobjects2.setText(highscores.next());
     	tvuser3.setText(highscores.next());
     	tvsequences3.setText(highscores.next());
-//    	tvtime3.setText(highscores.next());
+    	tvtime3.setText(highscores.next());
     	tvobjects3.setText(highscores.next());
     	tvuser4.setText(highscores.next());
     	tvsequences4.setText(highscores.next());
-//    	tvtime4.setText(highscores.next());
+    	tvtime4.setText(highscores.next());
     	tvobjects4.setText(highscores.next());
     	tvuser5.setText(highscores.next());
     	tvsequences5.setText(highscores.next());
-//    	tvtime5.setText(highscores.next());
+    	tvtime5.setText(highscores.next());
     	tvobjects5.setText(highscores.next());
+    	highscores.close();
     	
     	//Create New User Button
     	final Button bcreateuser = (Button) findViewById(R.id.createnewuserbutton);
@@ -175,8 +182,8 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
             	final TextView tvcreate = (TextView) findViewById(R.id.createnewusertext);
     			String usernameinput = tvcreate.getText().toString();
     			
-    			play = sscgame.createUser(usernameinput);
-    			if(play != null)
+    			pcurrentplayer = sscgame.createUser(usernameinput);
+    			if(pcurrentplayer != null)
     			{
     				optionsSetup();
     			}
@@ -202,7 +209,7 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 		setContentView(R.layout.optionsui);
 
 		final TextView tvusername = (TextView) findViewById(R.id.optionsusernametext);
-		tvusername.setText(play.getName());
+		tvusername.setText(pcurrentplayer.getName());
 		
 		final Spinner snumberofobjects = (Spinner) findViewById(R.id.numberofobjectsdropdown);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -235,7 +242,7 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
         final Button blogout = (Button) findViewById(R.id.logoutbutton);
         blogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	play = null;
+            	pcurrentplayer = null;
             	loginSetup();
             }
         });
@@ -311,7 +318,7 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	gameview = (GridView) findViewById(R.id.gamegridview);
     	iagame = new ImageAdapter(this);
     	
-    	sscgame.play(play, alshapes, alcolors, numberofobjects, this);
+    	sscgame.play(pcurrentplayer, alshapes, alcolors, numberofobjects, this);
     	
     	int temp = 0;
     	if(gridlayout)
@@ -328,8 +335,6 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	{
     		iagame.addShape(sscgame.getGameObject(i));
     	}
-    	
-    	iagame.prepare();
     	gameview.setAdapter(iagame);
     	
     	final TextView tvgameviewdebug = (TextView) findViewById(R.id.gameviewtextview);
@@ -345,6 +350,9 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
             	sscgame.compareSequence(position);
             	tvgameviewdebug.setText("Sequence: " + sscgame.getGame().getComputerSequence().toString());
             	presscount++;
+            	AnimationDrawable frameAnimation = (AnimationDrawable)v.getBackground();
+            	frameAnimation.stop();
+            	frameAnimation.start();
             	if(presscount == sequenceSize)
             	{
             		showSequence(sscgame.getGame().getComputerSequence());
@@ -353,9 +361,6 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
             	}
 
             	
-            	AnimationDrawable frameAnimation = (AnimationDrawable)v.getBackground();
-            	frameAnimation.stop();
-            	frameAnimation.start();
         	}
         });
     	
