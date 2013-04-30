@@ -6,10 +6,14 @@ import com.example.memorygame.R;
 import com.simonsays.model.GameObject;
 import com.simonsays.model.SimonSays;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -17,6 +21,8 @@ import android.widget.ImageView;
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
 	private ArrayList<Integer> shapeView;
+//	public float fx = .9f;
+//	public float fy = .9f;
     
     // references to our images
     private Integer[] availableAnimations = {
@@ -50,21 +56,25 @@ public class ImageAdapter extends BaseAdapter {
         return 0;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+	@SuppressLint("NewApi")
+	public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
         if (convertView == null) 
         {
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(20, 20, 20, 20);
+            imageView.setPadding(16, 16, 16, 16);
         } 
         else 
         {
             imageView = (ImageView) convertView;
         }
         
+//        imageView.setScaleX(fx);
+//        imageView.setScaleY(fy);
         imageView.setBackgroundResource(shapeView.get(position));
+        
         return imageView;
     }
     

@@ -17,7 +17,10 @@ import android.provider.Settings;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ScaleDrawable;
 import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
@@ -45,19 +48,20 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 	int sequenceSize = 1;
 	int duration = 0;
 	boolean gridlayout = true;
+	boolean timeractive = false;
 	
 	GridView gameview;
 	ImageAdapter iagame;
-	Timer timer;
-	TimerTask timertask = new TimerTask() 
-	{
-		@Override
-		public void run()
-		{
-//			setTimeText("Time: " + duration);
-			duration++;
-		}
-	};
+//	Timer timer;
+//	TimerTask timertask = new TimerTask() 
+//	{
+//		@Override
+//		public void run()
+//		{
+////			setTimeText("Time: " + duration);
+//			duration++;
+//		}
+//	};
 	
 	//This helps animate each shape in the sequence
 	//countn increments up for the size of the sequence, starting from 0, and animates that number in the sequence
@@ -75,6 +79,29 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
         	gameview.refreshDrawableState();
 		}
 	};
+
+//	final Handler handler2 = new Handler()
+//	{
+//		@Override
+//		public void handleMessage(final Message msg)
+//		{
+//			super.handleMessage(msg);
+//			while(timeractive)
+//			{
+////				
+////				try 
+////				{
+////					this.wait(1000);
+////				} 
+////				catch (InterruptedException e) 
+////				{
+////					
+////				}
+////				setTimeText("Time: " + duration);
+////				duration++;
+//			}
+//		}
+//	};
 	
 	//This runs the handler, which animates one of the shapes in the sequence
 	private class AnimatorRunnable implements Runnable
@@ -86,10 +113,20 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 		}
 	};
 	
+//	private class TimerRunnable implements Runnable
+//	{
+//		@Override
+//		public void run() 
+//		{
+//			handler2.sendMessage(new Message());
+//		}
+//	};
+	
 	//Sets up the Activity, calls loginSetup
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         loginSetup();
     }
 
@@ -153,6 +190,7 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	final TextView tvobjects3 = (TextView) findViewById(R.id.highscoreobjects3);
     	final TextView tvobjects4 = (TextView) findViewById(R.id.highscoreobjects4);
     	final TextView tvobjects5 = (TextView) findViewById(R.id.highscoreobjects5);
+    	
     	Scanner highscores = new Scanner(sscgame.getHighScores());
     	tvuser1.setText(highscores.next());
     	tvsequences1.setText(highscores.next());
@@ -204,7 +242,7 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     			else
     			{
     				final TextView tvcreateuserfail = (TextView) findViewById(R.id.editTextCreateUserFail);
-    				tvcreateuserfail.setText("Username must be unique and must contain fewer than twelve characters in length.");
+    				tvcreateuserfail.setText("Username must be unique and contain between one and twelve characters.");
     			}
             }
         });
@@ -331,6 +369,21 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	setContentView(R.layout.gameui);
     	gameview = (GridView) findViewById(R.id.gamegridview);
     	iagame = new ImageAdapter(this);
+//        switch(objectsize)
+//        {
+//        	case 0:
+//        		iagame.fx = .3f;
+//        		iagame.fy = .3f;
+//        		break;
+//        	case 1:
+//        		iagame.fx = .6f;
+//        		iagame.fy = .6f;
+//        		break;
+//        	case 2:
+//        		iagame.fx = .9f;
+//        		iagame.fy = .9f;
+//        		break;
+//        }
     	
     	sscgame.play(pcurrentplayer, alshapes, alcolors, numberofobjects, this);
     	
@@ -353,6 +406,7 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
     	
 		presscount = 0;
 		sequenceSize = 1;
+		setGameText("Sequences: " + sequenceSize);
     	gameview.setOnItemClickListener(new OnItemClickListener() 
     	{
             @SuppressLint("NewApi")
@@ -368,27 +422,33 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
             		showSequence(sscgame.getGame().getComputerSequence());
             		presscount = 0;
             		sequenceSize += 1;
+            		setGameText("Sequences: " + sequenceSize);
             	}
         	}
         });
     	
 		showSequence(sscgame.getGame().getComputerSequence());
-		timer = new Timer();
 		
-		try
-		{
-			timer.scheduleAtFixedRate(timertask, 1000, 1000);
-		}
-		catch(Exception e)
-		{
-			
-		}
+//		timeractive = true;
+		
+//		handler2.postAtTime(new TimerRunnable(), 0);
+		
+//		timer = new Timer();
+//		duration = 0;
+//		try
+//		{
+//			timer.scheduleAtFixedRate(timertask, 1000, 1000);
+//		}
+//		catch(Exception e)
+//		{
+//			
+//		}
     }
     
-    public void setTimeText(String a)
+    public void setGameText(String a)
     {
     	final TextView tv = (TextView) findViewById(R.id.gameviewtextview);
-    	tv.setText("Time: " + duration);
+    	tv.setText(a);
     }
 
     public void showSequence(final ArrayList<Integer> sequence)
@@ -409,8 +469,9 @@ public class MainActivity extends Activity implements ISimonSaysObserver {
 		}
 		else
 		{
-			timer.cancel();
-			timer = null;
+//			timer.cancel();
+//			timer = null;
+			timeractive = false;
 			ss.getScore().setTime(duration);
 			duration = 0;
 			

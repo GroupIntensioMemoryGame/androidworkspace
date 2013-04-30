@@ -49,8 +49,18 @@ public class Score implements Comparable<Score>
 	@Override
 	public int compareTo(Score o)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		if(this.getSequenceLength() > o.getSequenceLength())
+		{
+			return 1;
+		}
+		else if(this.getSequenceLength() == o.getSequenceLength())
+		{
+			return 0;
+		}
+		else
+		{
+			return -1;
+		}
 	}
 	
 	public String toString()

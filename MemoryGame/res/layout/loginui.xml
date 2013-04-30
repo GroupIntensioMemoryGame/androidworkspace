@@ -26,7 +26,7 @@
             android:focusableInTouchMode="false"
             android:text="@string/group_title"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="80sp" />
+            android:textSize="70sp" />
 
         <TextView
             android:id="@+id/gametitletext"
@@ -37,7 +37,7 @@
             android:focusableInTouchMode="false"
             android:text="@string/game_title"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="40sp" />
+            android:textSize="30sp" />
 
         <EditText
             android:id="@+id/loginusertext"

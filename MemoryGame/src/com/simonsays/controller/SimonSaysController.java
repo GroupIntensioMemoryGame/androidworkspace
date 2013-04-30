@@ -16,8 +16,8 @@ public class SimonSaysController {
 		
 		// Read high scores from file
 		highScores = new ArrayList<Score>();
-		highScores.add(new Score("Steve", 4, 8));
-		highScores.add(new Score("Bob", 4, 7));
+		highScores.add(new Score("Steve", 4, 5));
+		highScores.add(new Score("Bob", 4, 4));
 		highScores.add(new Score("nospace", 16, 3));
 		highScores.add(new Score("Steve", 16, 2));
 		highScores.add(new Score("Steve", 4, 1));
@@ -76,7 +76,7 @@ public class SimonSaysController {
 			}
 		}
 		
-		if(input.length() < 13 && !isUsed)
+		if(input.length() < 13 && !isUsed && input.length() != 0)
 		{
 			players.add(new Player(input));
 			return players.get(players.size() - 1);
@@ -92,8 +92,25 @@ public class SimonSaysController {
 		{
 			highScores.add(s);
 		}
+		else
+		{
+			replaceHighscore(s);
+		}
 	}
 	
+	public void replaceHighscore(Score s)
+	{
+		for(int i = 0; i < highScores.size(); i++)
+		{
+			if(s.compareTo(highScores.get(i)) > 0)
+			{
+				highScores.add(i, s);
+				highScores.remove(highScores.size() - 1);
+				break;
+			}
+		}
+	}
+
 	public String getHighScores()
 	{
 		String out = "";
